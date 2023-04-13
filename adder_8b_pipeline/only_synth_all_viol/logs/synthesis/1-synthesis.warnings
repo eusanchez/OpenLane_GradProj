@@ -1,0 +1,77 @@
+Warning: WIDTHLABEL \B [3:0] 4
+Warning: WIDTHLABEL \A [3:0] 4
+Warning: WIDTHLABEL \A_msbits [0] 1
+Warning: WIDTHLABEL \B_msbits [0] 1
+Warning: WIDTHLABEL \Sum [4] 1
+Warning: WIDTHLABEL \A_msbits [1] 1
+Warning: WIDTHLABEL \B_msbits [1] 1
+Warning: WIDTHLABEL \A_msbits [0] 1
+Warning: WIDTHLABEL \B_msbits [0] 1
+Warning: WIDTHLABEL \Sum [5] 1
+Warning: WIDTHLABEL \A_msbits [2] 1
+Warning: WIDTHLABEL \B_msbits [2] 1
+Warning: WIDTHLABEL \A_msbits [1] 1
+Warning: WIDTHLABEL \B_msbits [1] 1
+Warning: WIDTHLABEL \Sum [6] 1
+Warning: WIDTHLABEL \A_msbits [3] 1
+Warning: WIDTHLABEL \B_msbits [3] 1
+Warning: WIDTHLABEL \A_msbits [2] 1
+Warning: WIDTHLABEL \B_msbits [2] 1
+Warning: WIDTHLABEL \Sum [7] 1
+Warning: WIDTHLABEL \B [0] 1
+Warning: WIDTHLABEL \A [0] 1
+Warning: WIDTHLABEL \Sum_a0 [0] 1
+Warning: WIDTHLABEL \B [1] 1
+Warning: WIDTHLABEL \A [1] 1
+Warning: WIDTHLABEL \B [0] 1
+Warning: WIDTHLABEL \A [0] 1
+Warning: WIDTHLABEL \Sum_a0 [1] 1
+Warning: WIDTHLABEL \B [2] 1
+Warning: WIDTHLABEL \A [2] 1
+Warning: WIDTHLABEL \B [1] 1
+Warning: WIDTHLABEL \A [1] 1
+Warning: WIDTHLABEL \Sum_a0 [2] 1
+Warning: WIDTHLABEL \B [3] 1
+Warning: WIDTHLABEL \A [3] 1
+Warning: WIDTHLABEL \B [2] 1
+Warning: WIDTHLABEL \A [2] 1
+Warning: WIDTHLABEL \Sum_a0 [3] 1
+Warning: WIDTHLABEL \A_msbits [3] 1
+Warning: WIDTHLABEL \B_msbits [3] 1
+Warning: WIDTHLABEL \B [3] 1
+Warning: WIDTHLABEL \A [3] 1
+Warning: WIDTHLABEL \A [4] 1
+Warning: WIDTHLABEL \A_msbits [0] 1
+Warning: WIDTHLABEL \A [5] 1
+Warning: WIDTHLABEL \A_msbits [1] 1
+Warning: WIDTHLABEL \A [6] 1
+Warning: WIDTHLABEL \A_msbits [2] 1
+Warning: WIDTHLABEL \A [7] 1
+Warning: WIDTHLABEL \A_msbits [3] 1
+Warning: WIDTHLABEL \B [4] 1
+Warning: WIDTHLABEL \B_msbits [0] 1
+Warning: WIDTHLABEL \B [5] 1
+Warning: WIDTHLABEL \B_msbits [1] 1
+Warning: WIDTHLABEL \B [6] 1
+Warning: WIDTHLABEL \B_msbits [2] 1
+Warning: WIDTHLABEL \B [7] 1
+Warning: WIDTHLABEL \B_msbits [3] 1
+Warning: WIDTHLABEL \Sum_a0 [0] 1
+Warning: WIDTHLABEL \Sum_a0_reg [0] 1
+Warning: WIDTHLABEL \Sum_a0 [1] 1
+Warning: WIDTHLABEL \Sum_a0_reg [1] 1
+Warning: WIDTHLABEL \Sum_a0 [2] 1
+Warning: WIDTHLABEL \Sum_a0_reg [2] 1
+Warning: WIDTHLABEL \Sum_a0 [3] 1
+Warning: WIDTHLABEL \Sum_a0_reg [3] 1
+ABC: Warning: Detected 2 multi-output gates (for example, "sky130_fd_sc_hd__fa_1").
+Warning: Wire adder_8b_pipeline.\Sum [7] is used but has no driver.
+Warning: Wire adder_8b_pipeline.\Sum [6] is used but has no driver.
+Warning: Wire adder_8b_pipeline.\Sum [5] is used but has no driver.
+Warning: Wire adder_8b_pipeline.\Sum [4] is used but has no driver.
+Warning: Wire adder_8b_pipeline.\Sum [3] is used but has no driver.
+Warning: Wire adder_8b_pipeline.\Sum [2] is used but has no driver.
+Warning: Wire adder_8b_pipeline.\Sum [1] is used but has no driver.
+Warning: Wire adder_8b_pipeline.\Sum [0] is used but has no driver.
+Warning: Wire adder_8b_pipeline.\C_out is used but has no driver.
+Warnings: 47 unique messages, 75 total

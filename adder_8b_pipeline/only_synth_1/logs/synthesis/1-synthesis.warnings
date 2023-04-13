@@ -1,0 +1,11 @@
+/openlane/designs/adder_8b_pipeline/src/adder_4b.v:8: Warning: Identifier `\Sum' is implicitly declared.
+Warning: WIDTHLABEL \B [3:0] 4
+Warning: WIDTHLABEL \A [3:0] 4
+Warning: Wire adder_8b_pipeline.\Sum [7] is used but has no driver.
+Warning: Wire adder_8b_pipeline.\Sum [6] is used but has no driver.
+Warning: Wire adder_8b_pipeline.\Sum [5] is used but has no driver.
+Warning: Wire adder_8b_pipeline.\Sum [4] is used but has no driver.
+Warning: Wire adder_8b_pipeline.\Sum_a0 [3] is used but has no driver.
+Warning: Wire adder_8b_pipeline.\Sum_a0 [2] is used but has no driver.
+Warning: Wire adder_8b_pipeline.\Sum_a0 [1] is used but has no driver.
+Warning: Wire adder_8b_pipeline.\Sum_a0 [0] is used but has no driver.

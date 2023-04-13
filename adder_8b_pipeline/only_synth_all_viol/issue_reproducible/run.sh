@@ -1,0 +1,40 @@
+#!/bin/sh
+dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
+cd $dir;
+export CLOCK_PERIOD='10.0';
+export CLOCK_PORT='clk';
+export CURRENT_DEF='0';
+export CURRENT_NETLIST='./results/synthesis/adder_8b_pipeline.v';
+export CURRENT_ODB='0';
+export CURRENT_SDC='openlane/scripts/base.sdc';
+export DESIGN_NAME='adder_8b_pipeline';
+export FP_PDN_ENABLE_GLOBAL_CONNECTIONS='1';
+export FP_PDN_ENABLE_MACROS_GRID='1';
+export IO_PCT='0.2';
+export LIB_FASTEST='pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v95.lib';
+export LIB_SLOWEST='pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib';
+export LIB_SYNTH_COMPLETE='pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib';
+export LIB_TYPICAL='pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib';
+export MERGED_LEF='./tmp/merged.nom.lef';
+export PACKAGED_SCRIPT_0='openlane/scripts/openroad/sta.tcl';
+export PACKAGED_SCRIPT_1='openlane/scripts/openroad/common/io.tcl';
+export PACKAGED_SCRIPT_2='openlane/scripts/base.sdc';
+export PACKAGED_SCRIPT_3='openlane/scripts/openroad/common/set_global_connections.tcl';
+export RUN_STANDALONE='1';
+export SAVE_DEF='./out.def';
+export SAVE_LIB='./results/synthesis/adder_8b_pipeline.lib';
+export SAVE_SDF='./results/synthesis/adder_8b_pipeline.sdf';
+export SCRIPTS_DIR='openlane/scripts';
+export STA_PRE_CTS='1';
+export STA_REPORT_POWER='1';
+export STD_CELL_GROUND_PINS='VGND VNB';
+export STD_CELL_POWER_PINS='VPWR VPB';
+export SYNTH_CAP_LOAD='33.442';
+export SYNTH_CLOCK_TRANSITION='0.15';
+export SYNTH_CLOCK_UNCERTAINTY='0.25';
+export SYNTH_DRIVING_CELL='sky130_fd_sc_hd__inv_2';
+export SYNTH_DRIVING_CELL_PIN='Y';
+export SYNTH_MAX_FANOUT='10';
+export SYNTH_TIMING_DERATE='0.05';
+TOOL_BIN=${TOOL_BIN:-openroad}
+$TOOL_BIN -exit $PACKAGED_SCRIPT_0

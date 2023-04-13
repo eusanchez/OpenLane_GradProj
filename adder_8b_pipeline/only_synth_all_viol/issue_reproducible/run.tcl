@@ -1,0 +1,37 @@
+#!/usr/bin/env openroad
+set ::env(CLOCK_PERIOD) {10.0};
+set ::env(CLOCK_PORT) {clk};
+set ::env(CURRENT_DEF) {0};
+set ::env(CURRENT_NETLIST) {./results/synthesis/adder_8b_pipeline.v};
+set ::env(CURRENT_ODB) {0};
+set ::env(CURRENT_SDC) {openlane/scripts/base.sdc};
+set ::env(DESIGN_NAME) {adder_8b_pipeline};
+set ::env(FP_PDN_ENABLE_GLOBAL_CONNECTIONS) {1};
+set ::env(FP_PDN_ENABLE_MACROS_GRID) {1};
+set ::env(IO_PCT) {0.2};
+set ::env(LIB_FASTEST) {pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v95.lib};
+set ::env(LIB_SLOWEST) {pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib};
+set ::env(LIB_SYNTH_COMPLETE) {pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib};
+set ::env(LIB_TYPICAL) {pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib};
+set ::env(MERGED_LEF) {./tmp/merged.nom.lef};
+set ::env(PACKAGED_SCRIPT_0) {openlane/scripts/openroad/sta.tcl};
+set ::env(PACKAGED_SCRIPT_1) {openlane/scripts/openroad/common/io.tcl};
+set ::env(PACKAGED_SCRIPT_2) {openlane/scripts/base.sdc};
+set ::env(PACKAGED_SCRIPT_3) {openlane/scripts/openroad/common/set_global_connections.tcl};
+set ::env(RUN_STANDALONE) {1};
+set ::env(SAVE_DEF) {./out.def};
+set ::env(SAVE_LIB) {./results/synthesis/adder_8b_pipeline.lib};
+set ::env(SAVE_SDF) {./results/synthesis/adder_8b_pipeline.sdf};
+set ::env(SCRIPTS_DIR) {openlane/scripts};
+set ::env(STA_PRE_CTS) {1};
+set ::env(STA_REPORT_POWER) {1};
+set ::env(STD_CELL_GROUND_PINS) {VGND VNB};
+set ::env(STD_CELL_POWER_PINS) {VPWR VPB};
+set ::env(SYNTH_CAP_LOAD) {33.442};
+set ::env(SYNTH_CLOCK_TRANSITION) {0.15};
+set ::env(SYNTH_CLOCK_UNCERTAINTY) {0.25};
+set ::env(SYNTH_DRIVING_CELL) {sky130_fd_sc_hd__inv_2};
+set ::env(SYNTH_DRIVING_CELL_PIN) {Y};
+set ::env(SYNTH_MAX_FANOUT) {10};
+set ::env(SYNTH_TIMING_DERATE) {0.05};
+source $::env(PACKAGED_SCRIPT_0)

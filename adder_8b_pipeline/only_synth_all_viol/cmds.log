@@ -1,0 +1,30 @@
+Tue Apr 04 23:02:44 UTC 2023 - Executing "openroad -exit -no_init -python /openlane/scripts/odbpy/lefutil.py get_metal_layers -o /openlane/designs/adder_8b_pipeline/runs/only_synth_all_viol/tmp/layers.list /root/.volare/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__nom.tlef"
+
+Tue Apr 04 23:02:44 UTC 2023 - Executing "/openlane/scripts/mergeLef.py -o /openlane/designs/adder_8b_pipeline/runs/only_synth_all_viol/tmp/merged.nom.lef -i /root/.volare/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__nom.tlef {/root/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_ef_sc_hd.lef /root/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef} |& tee /dev/null"
+
+Tue Apr 04 23:02:44 UTC 2023 - Executing "/openlane/scripts/mergeLef.py -o /openlane/designs/adder_8b_pipeline/runs/only_synth_all_viol/tmp/merged.min.lef -i /root/.volare/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__min.tlef {/root/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_ef_sc_hd.lef /root/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef} |& tee /dev/null"
+
+Tue Apr 04 23:02:44 UTC 2023 - Executing "/openlane/scripts/mergeLef.py -o /openlane/designs/adder_8b_pipeline/runs/only_synth_all_viol/tmp/merged.max.lef -i /root/.volare/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__max.tlef {/root/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_ef_sc_hd.lef /root/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef} |& tee /dev/null"
+
+Tue Apr 04 23:02:44 UTC 2023 - Executing "python3 /openlane/scripts/mergeLib.py --output /openlane/designs/adder_8b_pipeline/runs/only_synth_all_viol/tmp/synthesis/merged.lib --name sky130A_merged /root/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib"
+
+Tue Apr 04 23:02:45 UTC 2023 - Executing "python3 /openlane/scripts/libtrim.py --cell-file /openlane/designs/adder_8b_pipeline/runs/only_synth_all_viol/tmp/synthesis/trimmed.lib.exclude.list --output /openlane/designs/adder_8b_pipeline/runs/only_synth_all_viol/tmp/synthesis/trimmed.lib /openlane/designs/adder_8b_pipeline/runs/only_synth_all_viol/tmp/synthesis/merged.lib"
+
+Tue Apr 04 23:02:45 UTC 2023 - Executing "python3 /openlane/scripts/libtrim.py --cell-file /openlane/designs/adder_8b_pipeline/runs/only_synth_all_viol/tmp/cts/cts.lib.exclude.list --output /openlane/designs/adder_8b_pipeline/runs/only_synth_all_viol/tmp/cts/cts.lib /root/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib"
+
+Tue Apr 04 23:02:45 UTC 2023 - Executing "python3 /openlane/scripts/new_tracks.py -i /root/.volare/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tracks.info -o /openlane/designs/adder_8b_pipeline/runs/only_synth_all_viol/tmp/routing/config.tracks"
+
+Tue Apr 04 23:02:45 UTC 2023 - Executing "echo {OpenLane ed194238ac359aca044c54fa8cbbbd12280e1a8c} > /openlane/designs/adder_8b_pipeline/runs/only_synth_all_viol/OPENLANE_VERSION"
+
+Tue Apr 04 23:03:03 UTC 2023 - Executing "sed -E {s/^([[:space:]]+)pg_pin(.*)/\1pin\2\n\1    direction : "inout";/g} /root/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib > /openlane/designs/adder_8b_pipeline/runs/only_synth_all_viol/tmp/synthesis/1-sky130_fd_sc_hd__tt_025C_1v80.no_pg.lib"
+
+Tue Apr 04 23:03:03 UTC 2023 - Executing "sed -E {s/^([[:space:]]+)pg_pin(.*)/\1pin\2\n\1    direction : "inout";/g} /openlane/designs/adder_8b_pipeline/runs/only_synth_all_viol/tmp/synthesis/trimmed.lib > /openlane/designs/adder_8b_pipeline/runs/only_synth_all_viol/tmp/synthesis/1-trimmed.no_pg.lib"
+
+Tue Apr 04 23:03:04 UTC 2023 - Executing "yosys -c /openlane/scripts/yosys/synth.tcl |& tee /dev/null /openlane/designs/adder_8b_pipeline/runs/only_synth_all_viol/logs/synthesis/1-synthesis.log"
+
+Tue Apr 04 23:03:04 UTC 2023 - Executing "sed -i.bak -e {s/\(set ::env(CURRENT_NETLIST)\).*/\1 \/openlane\/designs\/adder_8b_pipeline\/runs\/only_synth_all_viol\/results\/synthesis\/adder_8b_pipeline.v/} /openlane/designs/adder_8b_pipeline/runs/only_synth_all_viol/config.tcl"
+
+Tue Apr 04 23:03:04 UTC 2023 - Executing "sed -i.bak /defparam/d /openlane/designs/adder_8b_pipeline/runs/only_synth_all_viol/results/synthesis/adder_8b_pipeline.v"
+
+Tue Apr 04 23:03:04 UTC 2023 - Executing "openroad -exit /openlane/scripts/openroad/sta.tcl |& tee /dev/null /openlane/designs/adder_8b_pipeline/runs/only_synth_all_viol/logs/synthesis/2-sta.log"
+

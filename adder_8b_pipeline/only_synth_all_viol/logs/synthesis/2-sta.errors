@@ -1,0 +1,2 @@
+[ERROR STA-0403] report_checks -violators_only is not a known keyword or flag.
+Error: sta.tcl, 41 STA-0403

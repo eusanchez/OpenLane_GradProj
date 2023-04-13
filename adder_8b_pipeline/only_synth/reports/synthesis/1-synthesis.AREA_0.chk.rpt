@@ -1,0 +1,13 @@
+
+61. Executing CHECK pass (checking for obvious problems).
+Checking module adder_8b_pipeline...
+Warning: Wire adder_8b_pipeline.\Sum [7] is used but has no driver.
+Warning: Wire adder_8b_pipeline.\Sum [6] is used but has no driver.
+Warning: Wire adder_8b_pipeline.\Sum [5] is used but has no driver.
+Warning: Wire adder_8b_pipeline.\Sum [4] is used but has no driver.
+Warning: Wire adder_8b_pipeline.\Sum [3] is used but has no driver.
+Warning: Wire adder_8b_pipeline.\Sum [2] is used but has no driver.
+Warning: Wire adder_8b_pipeline.\Sum [1] is used but has no driver.
+Warning: Wire adder_8b_pipeline.\Sum [0] is used but has no driver.
+Warning: Wire adder_8b_pipeline.\C_out is used but has no driver.
+Found and reported 9 problems.

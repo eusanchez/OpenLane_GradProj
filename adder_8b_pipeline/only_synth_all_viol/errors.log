@@ -1,0 +1,15 @@
+[ERROR]: during executing openroad script /openlane/scripts/openroad/sta.tcl
+[ERROR]: Log: designs/adder_8b_pipeline/runs/only_synth_all_viol/logs/synthesis/2-sta.log
+[ERROR]: Last 10 lines:
+[INFO]: Setting clock transition to: 0.15
+[INFO]: Setting timing derate to: 0.5 %
+min_report
+
+===========================================================================
+report_checks -path_delay min (Hold)
+============================================================================
+[ERROR STA-0403] report_checks -violators_only is not a known keyword or flag.
+Error: sta.tcl, 41 STA-0403
+child process exited abnormally
+
+[ERROR]: Creating issue reproducible...

@@ -1,0 +1,145 @@
+
+ /----------------------------------------------------------------------------\
+ |                                                                            |
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |                                                                            |
+ |  Copyright (C) 2012 - 2020  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |                                                                            |
+ |  Permission to use, copy, modify, and/or distribute this software for any  |
+ |  purpose with or without fee is hereby granted, provided that the above    |
+ |  copyright notice and this permission notice appear in all copies.         |
+ |                                                                            |
+ |  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES  |
+ |  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF          |
+ |  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR   |
+ |  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    |
+ |  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN     |
+ |  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF   |
+ |  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.            |
+ |                                                                            |
+ \----------------------------------------------------------------------------/
+
+ Yosys 0.22 (git sha1 f109fa3d4c5, gcc 8.3.1 -fPIC -Os)
+
+[TCL: yosys -import] Command name collision: found pre-existing command `cd' -> skip.
+[TCL: yosys -import] Command name collision: found pre-existing command `eval' -> skip.
+[TCL: yosys -import] Command name collision: found pre-existing command `exec' -> skip.
+[TCL: yosys -import] Command name collision: found pre-existing command `read' -> skip.
+[TCL: yosys -import] Command name collision: found pre-existing command `trace' -> skip.
+
+1. Executing Verilog-2005 frontend: /openlane/designs/adder_8b_pipeline/src/adder_8b_pipeline.v
+Parsing SystemVerilog input from `/openlane/designs/adder_8b_pipeline/src/adder_8b_pipeline.v' to AST representation.
+Generating RTLIL representation for module `\adder_8b_pipeline'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: /openlane/designs/adder_8b_pipeline/src/adder_4b.v
+Parsing SystemVerilog input from `/openlane/designs/adder_8b_pipeline/src/adder_4b.v' to AST representation.
+Generating RTLIL representation for module `\adder_4b'.
+/openlane/designs/adder_8b_pipeline/src/adder_4b.v:8: Warning: Identifier `\Sum' is implicitly declared.
+Successfully finished Verilog frontend.
+
+3. Generating Graphviz representation of design.
+Writing dot description to `/openlane/designs/adder_8b_pipeline/runs/only_synth_1/tmp/synthesis/hierarchy.dot'.
+Dumping module adder_8b_pipeline to page 1.
+Warning: WIDTHLABEL \B [3:0] 4
+Warning: WIDTHLABEL \A [3:0] 4
+
+4. Executing HIERARCHY pass (managing design hierarchy).
+
+4.1. Analyzing design hierarchy..
+Top module:  \adder_8b_pipeline
+Used module:     \adder_4b
+
+4.2. Analyzing design hierarchy..
+Top module:  \adder_8b_pipeline
+Used module:     \adder_4b
+Removed 0 unused modules.
+Mapping positional arguments of cell adder_8b_pipeline.a41 (adder_4b).
+Mapping positional arguments of cell adder_8b_pipeline.a40 (adder_4b).
+
+5. Executing TRIBUF pass.
+
+6. Executing HIERARCHY pass (managing design hierarchy).
+
+6.1. Analyzing design hierarchy..
+Top module:  \adder_8b_pipeline
+Used module:     \adder_4b
+
+6.2. Analyzing design hierarchy..
+Top module:  \adder_8b_pipeline
+Used module:     \adder_4b
+Removed 0 unused modules.
+
+7. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+8. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$/openlane/designs/adder_8b_pipeline/src/adder_8b_pipeline.v:27$1 in module adder_8b_pipeline.
+Removed a total of 0 dead cases.
+
+9. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 4 redundant assignments.
+Promoted 0 assignments to connections.
+
+10. Executing PROC_INIT pass (extract init attributes).
+
+11. Executing PROC_ARST pass (detect async resets in processes).
+
+12. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~1 debug messages>
+
+13. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\adder_8b_pipeline.$proc$/openlane/designs/adder_8b_pipeline/src/adder_8b_pipeline.v:27$1'.
+     1/4: $0\B_msbits[3:0]
+     2/4: $0\A_msbits[3:0]
+     3/4: $0\C_out_a0_reg[0:0]
+     4/4: $0\Sum_a0_reg[3:0]
+
+14. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+15. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\adder_8b_pipeline.\C_out_a0_reg' using process `\adder_8b_pipeline.$proc$/openlane/designs/adder_8b_pipeline/src/adder_8b_pipeline.v:27$1'.
+  created $dff cell `$procdff$17' with positive edge clock.
+Creating register for signal `\adder_8b_pipeline.\A_msbits' using process `\adder_8b_pipeline.$proc$/openlane/designs/adder_8b_pipeline/src/adder_8b_pipeline.v:27$1'.
+  created $dff cell `$procdff$18' with positive edge clock.
+Creating register for signal `\adder_8b_pipeline.\B_msbits' using process `\adder_8b_pipeline.$proc$/openlane/designs/adder_8b_pipeline/src/adder_8b_pipeline.v:27$1'.
+  created $dff cell `$procdff$19' with positive edge clock.
+Creating register for signal `\adder_8b_pipeline.\Sum_a0_reg' using process `\adder_8b_pipeline.$proc$/openlane/designs/adder_8b_pipeline/src/adder_8b_pipeline.v:27$1'.
+  created $dff cell `$procdff$20' with positive edge clock.
+
+16. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+17. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\adder_8b_pipeline.$proc$/openlane/designs/adder_8b_pipeline/src/adder_8b_pipeline.v:27$1'.
+Removing empty process `adder_8b_pipeline.$proc$/openlane/designs/adder_8b_pipeline/src/adder_8b_pipeline.v:27$1'.
+Cleaned up 1 empty switch.
+
+18. Executing OPT_EXPR pass (perform const folding).
+Optimizing module adder_4b.
+Optimizing module adder_8b_pipeline.
+<suppressed ~4 debug messages>
+
+19. Executing FLATTEN pass (flatten design).
+Deleting now unused module adder_4b.
+<suppressed ~2 debug messages>
+
+20. Executing OPT_EXPR pass (perform const folding).
+Optimizing module adder_8b_pipeline.
+
+21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \adder_8b_pipeline..
+Removed 1 unused cells and 9 unused wires.
+<suppressed ~2 debug messages>
+
+22. Executing CHECK pass (checking for obvious problems).
+Checking module adder_8b_pipeline...
+Warning: Wire adder_8b_pipeline.\Sum [7] is used but has no driver.
+Warning: Wire adder_8b_pipeline.\Sum [6] is used but has no driver.
+Warning: Wire adder_8b_pipeline.\Sum [5] is used but has no driver.
+Warning: Wire adder_8b_pipeline.\Sum [4] is used but has no driver.
+Warning: Wire adder_8b_pipeline.\Sum_a0 [3] is used but has no driver.
+Warning: Wire adder_8b_pipeline.\Sum_a0 [2] is used but has no driver.
+Warning: Wire adder_8b_pipeline.\Sum_a0 [1] is used but has no driver.
+Warning: Wire adder_8b_pipeline.\Sum_a0 [0] is used but has no driver.
+ERROR: Found 8 problems in 'check -assert'.

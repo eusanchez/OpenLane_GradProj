@@ -1,0 +1,24 @@
+
+54. Printing statistics.
+
+=== adder_8b_pipeline ===
+
+   Number of wires:                 61
+   Number of wire bits:             91
+   Number of public wires:          12
+   Number of public wire bits:      42
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 72
+     $_ANDNOT_                      12
+     $_AND_                          2
+     $_MUX_                         13
+     $_NAND_                         6
+     $_NOR_                          2
+     $_ORNOT_                        2
+     $_OR_                           6
+     $_XNOR_                        12
+     $_XOR_                          4
+     sky130_fd_sc_hd__dfxtp_2       13
+

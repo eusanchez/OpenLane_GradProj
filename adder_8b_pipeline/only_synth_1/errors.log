@@ -1,0 +1,15 @@
+[ERROR]: during executing yosys script /openlane/scripts/yosys/synth.tcl
+[ERROR]: Log: designs/adder_8b_pipeline/runs/only_synth_1/logs/synthesis/1-synthesis.log
+[ERROR]: Last 10 lines:
+Warning: Wire adder_8b_pipeline.\Sum [7] is used but has no driver.
+Warning: Wire adder_8b_pipeline.\Sum [6] is used but has no driver.
+Warning: Wire adder_8b_pipeline.\Sum [5] is used but has no driver.
+Warning: Wire adder_8b_pipeline.\Sum [4] is used but has no driver.
+Warning: Wire adder_8b_pipeline.\Sum_a0 [3] is used but has no driver.
+Warning: Wire adder_8b_pipeline.\Sum_a0 [2] is used but has no driver.
+Warning: Wire adder_8b_pipeline.\Sum_a0 [1] is used but has no driver.
+Warning: Wire adder_8b_pipeline.\Sum_a0 [0] is used but has no driver.
+ERROR: Found 8 problems in 'check -assert'.
+child process exited abnormally
+
+[ERROR]: Creating issue reproducible...
