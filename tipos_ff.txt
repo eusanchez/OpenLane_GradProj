@@ -1,0 +1,6 @@
+sky130_fd_sc_hd__dfbbn_1
+sky130_fd_sc_hd__dfbbn_2
+sky130_fd_sc_hd__dfxtp_1
+sky130_fd_sc_hd__dfxtp_2
+_1592_
+
