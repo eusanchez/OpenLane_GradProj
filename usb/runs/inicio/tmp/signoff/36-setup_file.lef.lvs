@@ -1,0 +1,1 @@
+lvs {/openlane/designs/usb/runs/inicio/results/signoff/usb.spice usb} {/openlane/designs/usb/runs/inicio/tmp/signoff/33-powered_netlist.v usb} /home/licit/OpenLane/pdks/sky130A/libs.tech/netgen/sky130A_setup.tcl /openlane/designs/usb/runs/inicio/logs/signoff/36-usb.lef.log -json

@@ -1,0 +1,32 @@
+Fri Apr 21 23:44:36 UTC 2023 - Executing "openroad -python /openlane/scripts/odbpy/lefutil.py get_metal_layers -o /openlane/designs/usb/runs/prueba14/tmp/layers.list /home/licit/OpenLane/pdks/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__nom.tlef"
+
+Fri Apr 21 23:44:36 UTC 2023 - Executing "/openlane/scripts/mergeLef.py -o /openlane/designs/usb/runs/prueba14/tmp/merged.unpadded.nom.lef -i /home/licit/OpenLane/pdks/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__nom.tlef /home/licit/OpenLane/pdks/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef |& tee /dev/null"
+
+Fri Apr 21 23:44:36 UTC 2023 - Executing "/openlane/scripts/mergeLef.py -o /openlane/designs/usb/runs/prueba14/tmp/merged.unpadded.min.lef -i /home/licit/OpenLane/pdks/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__min.tlef /home/licit/OpenLane/pdks/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef |& tee /dev/null"
+
+Fri Apr 21 23:44:36 UTC 2023 - Executing "/openlane/scripts/mergeLef.py -o /openlane/designs/usb/runs/prueba14/tmp/merged.unpadded.max.lef -i /home/licit/OpenLane/pdks/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__max.tlef /home/licit/OpenLane/pdks/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef |& tee /dev/null"
+
+Fri Apr 21 23:44:36 UTC 2023 - Executing "openroad -python /openlane/scripts/mergeLib.py --output /openlane/designs/usb/runs/prueba14/tmp/synthesis/merged.lib --name sky130A_merged /home/licit/OpenLane/pdks/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib"
+
+Fri Apr 21 23:44:37 UTC 2023 - Executing "openroad -python /openlane/scripts/libtrim.py --cell-file /openlane/designs/usb/runs/prueba14/tmp/synthesis/trimmed.lib.exclude.list --output /openlane/designs/usb/runs/prueba14/tmp/synthesis/trimmed.lib /openlane/designs/usb/runs/prueba14/tmp/synthesis/merged.lib"
+
+Fri Apr 21 23:44:37 UTC 2023 - Executing "openroad -python /openlane/scripts/new_tracks.py -i /home/licit/OpenLane/pdks/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tracks.info -o /openlane/designs/usb/runs/prueba14/tmp/routing/config.tracks"
+
+Fri Apr 21 23:44:37 UTC 2023 - Executing "echo {openlane ebad315d1def25d9d253eb2ec1c56d7b4e59d7ca} > /openlane/designs/usb/runs/prueba14/OPENLANE_VERSION"
+
+Fri Apr 21 23:44:37 UTC 2023 - Executing "sed -E {s/^([[:space:]]+)pg_pin(.*)/\1pin\2\n\1    direction : "inout";/g} /home/licit/OpenLane/pdks/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib > /openlane/designs/usb/runs/prueba14/tmp/synthesis/1-sky130_fd_sc_hd__tt_025C_1v80.no_pg.lib"
+
+Fri Apr 21 23:44:38 UTC 2023 - Executing "sed -E {s/^([[:space:]]+)pg_pin(.*)/\1pin\2\n\1    direction : "inout";/g} /openlane/designs/usb/runs/prueba14/tmp/synthesis/trimmed.lib > /openlane/designs/usb/runs/prueba14/tmp/synthesis/1-trimmed.no_pg.lib"
+
+Fri Apr 21 23:44:38 UTC 2023 - Executing "yosys -c /openlane/scripts/yosys/synth.tcl -l /openlane/designs/usb/runs/prueba14/logs/synthesis/1-synthesis.log |& tee /dev/null"
+
+Fri Apr 21 23:44:40 UTC 2023 - Executing "sed -i -e {s/\(set ::env(CURRENT_NETLIST)\).*/\1 \/openlane\/designs\/usb\/runs\/prueba14\/results\/synthesis\/usb.v/} /openlane/designs/usb/runs/prueba14/config.tcl"
+
+Fri Apr 21 23:44:40 UTC 2023 - Executing "sed -i -e {s/\(set ::env(PREV_NETLIST)\).*/\1 0/} /openlane/designs/usb/runs/prueba14/config.tcl"
+
+Fri Apr 21 23:44:40 UTC 2023 - Executing "sed -i /defparam/d /openlane/designs/usb/runs/prueba14/results/synthesis/usb.v"
+
+Fri Apr 21 23:44:40 UTC 2023 - Executing "openroad -exit /openlane/scripts/openroad/sta.tcl |& tee /dev/null /openlane/designs/usb/runs/prueba14/logs/synthesis/2-sta.log"
+
+Fri Apr 21 23:44:41 UTC 2023 - Executing "openroad -python /openlane/scripts/generate_reports.py -d /openlane/designs/usb --design_name usb --tag prueba14 --output_file /openlane/designs/usb/runs/prueba14/reports/metrics.csv --man_report /openlane/designs/usb/runs/prueba14/reports/manufacturability.rpt --run_path /openlane/designs/usb/runs/prueba14"
+

@@ -1,0 +1,138 @@
+[ERROR]: during executing openroad script /openlane/scripts/openroad/sta.tcl
+[ERROR]: Exit code: 1
+[ERROR]: full log: designs/usb/runs/prueba7/logs/synthesis/2-sta.log
+[ERROR]: Last 10 lines:
+-----------------------------------------------------------------------------
+                                  0.23   data required time
+                                 -0.33   data arrival time
+-----------------------------------------------------------------------------
+                                  0.09   slack (MET)
+
+
+min_report_end
+Error: sta.tcl, 73 couldn't open "/home/licit/OpenLane/tipos_ff.txt": no such file or directory
+child process exited abnormally
+
+[ERROR]: Failed to package reproducible.
+[ERROR]: Flow failed.
+[ERROR]: during executing openroad script /openlane/scripts/openroad/sta.tcl
+[ERROR]: Exit code: 1
+[ERROR]: full log: designs/usb/runs/prueba7/logs/synthesis/4-sta.log
+[ERROR]: Last 10 lines:
+-----------------------------------------------------------------------------
+                                  0.23   data required time
+                                 -0.33   data arrival time
+-----------------------------------------------------------------------------
+                                  0.09   slack (MET)
+
+
+min_report_end
+Error: sta.tcl, 73 couldn't open "/home/licit/OpenLane/tipos_ff.txt": no such file or directory
+child process exited abnormally
+
+[ERROR]: Failed to package reproducible.
+[ERROR]: during executing openroad script /openlane/scripts/openroad/replace.tcl
+[ERROR]: Exit code: 1
+[ERROR]: full log: designs/usb/runs/prueba7/logs/placement/9-global.log
+[ERROR]: Last 10 lines:
+-----------------------------------------------------------------------------
+                                  0.23   data required time
+                                 -0.33   data arrival time
+-----------------------------------------------------------------------------
+                                  0.09   slack (MET)
+
+
+min_report_end
+Error: sta.tcl, 73 couldn't open "/home/licit/OpenLane/tipos_ff.txt": no such file or directory
+child process exited abnormally
+
+[ERROR]: during executing openroad script /openlane/scripts/openroad/resizer.tcl
+[ERROR]: Exit code: 1
+[ERROR]: full log: designs/usb/runs/prueba7/logs/placement/10-resizer.log
+[ERROR]: Last 10 lines:
+-----------------------------------------------------------------------------
+                                  0.22   data required time
+                                 -0.32   data arrival time
+-----------------------------------------------------------------------------
+                                  0.10   slack (MET)
+
+
+min_report_end
+Error: sta.tcl, 73 couldn't open "/home/licit/OpenLane/tipos_ff.txt": no such file or directory
+child process exited abnormally
+
+[ERROR]: during executing openroad script /openlane/scripts/openroad/cts.tcl
+[ERROR]: Exit code: 1
+[ERROR]: full log: designs/usb/runs/prueba7/logs/cts/13-cts.log
+[ERROR]: Last 10 lines:
+-----------------------------------------------------------------------------
+                                  0.65   data required time
+                                 -0.74   data arrival time
+-----------------------------------------------------------------------------
+                                  0.09   slack (MET)
+
+
+min_report_end
+Error: sta.tcl, 73 couldn't open "/home/licit/OpenLane/tipos_ff.txt": no such file or directory
+child process exited abnormally
+
+[ERROR]: during executing openroad script /openlane/scripts/openroad/resizer_timing.tcl
+[ERROR]: Exit code: 1
+[ERROR]: full log: designs/usb/runs/prueba7/logs/cts/15-resizer.log
+[ERROR]: Last 10 lines:
+-----------------------------------------------------------------------------
+                                  0.59   data required time
+                                 -0.72   data arrival time
+-----------------------------------------------------------------------------
+                                  0.13   slack (MET)
+
+
+min_report_end
+Error: sta.tcl, 73 couldn't open "/home/licit/OpenLane/tipos_ff.txt": no such file or directory
+child process exited abnormally
+
+[ERROR]: during executing openroad script /openlane/scripts/openroad/resizer_routing_timing.tcl
+[ERROR]: Exit code: 1
+[ERROR]: full log: designs/usb/runs/prueba7/logs/routing/17-resizer.log
+[ERROR]: Last 10 lines:
+-----------------------------------------------------------------------------
+                                  0.59   data required time
+                                 -0.73   data arrival time
+-----------------------------------------------------------------------------
+                                  0.13   slack (MET)
+
+
+min_report_end
+Error: sta.tcl, 73 couldn't open "/home/licit/OpenLane/tipos_ff.txt": no such file or directory
+child process exited abnormally
+
+[ERROR]: during executing openroad script /openlane/scripts/openroad/groute.tcl
+[ERROR]: Exit code: 1
+[ERROR]: full log: designs/usb/runs/prueba7/logs/routing/20-global.log
+[ERROR]: Last 10 lines:
+-----------------------------------------------------------------------------
+                                  0.60   data required time
+                                 -0.73   data arrival time
+-----------------------------------------------------------------------------
+                                  0.14   slack (MET)
+
+
+min_report_end
+Error: sta.tcl, 73 couldn't open "/home/licit/OpenLane/tipos_ff.txt": no such file or directory
+child process exited abnormally
+
+[ERROR]: during executing openroad script /openlane/scripts/openroad/sta.tcl
+[ERROR]: Exit code: 1
+[ERROR]: full log: designs/usb/runs/prueba7/logs/signoff/30-parasitics_sta.log
+[ERROR]: Last 10 lines:
+-----------------------------------------------------------------------------
+                                  0.59   data required time
+                                 -0.72   data arrival time
+-----------------------------------------------------------------------------
+                                  0.13   slack (MET)
+
+
+min_report_end
+Error: sta.tcl, 73 couldn't open "/home/licit/OpenLane/tipos_ff.txt": no such file or directory
+child process exited abnormally
+

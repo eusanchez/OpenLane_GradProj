@@ -1,0 +1,17 @@
+[ERROR]: during executing openroad script /openlane/scripts/openroad/sta.tcl
+[ERROR]: Exit code: 1
+[ERROR]: full log: designs/usb/runs/prueba26/logs/synthesis/4-sta.log
+[ERROR]: Last 10 lines:
+                                 14.67   data required time
+                                 -1.78   data arrival time
+-----------------------------------------------------------------------------
+                                 12.89   slack (MET)
+
+
+_1626_
+[ERROR STA-0516] unsupported instance -filter expression.
+Error: sta.tcl, 113 STA-0516
+child process exited abnormally
+
+[ERROR]: Failed to package reproducible.
+[ERROR]: Flow failed.

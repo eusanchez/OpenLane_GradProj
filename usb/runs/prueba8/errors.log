@@ -1,0 +1,17 @@
+[ERROR]: during executing openroad script /openlane/scripts/openroad/sta.tcl
+[ERROR]: Exit code: 1
+[ERROR]: full log: designs/usb/runs/prueba8/logs/synthesis/2-sta.log
+[ERROR]: Last 10 lines:
+
+min_report_end
+REPORTE_ANA
+
+===========================================================================
+report_checks -path_delay FF MIN (Hold)
+============================================================================
+[ERROR STA-0516] unsupported instance -filter expression.
+Error: sta.tcl, 92 STA-0516
+child process exited abnormally
+
+[ERROR]: Failed to package reproducible.
+[ERROR]: Flow failed.

@@ -1,0 +1,17 @@
+[ERROR]: during executing openroad script /openlane/scripts/openroad/sta.tcl
+[ERROR]: Exit code: 1
+[ERROR]: full log: designs/usb/runs/prueba42/logs/synthesis/2-sta.log
+[ERROR]: Last 10 lines:
+                                  0.23   data required time
+                                 -0.33   data arrival time
+-----------------------------------------------------------------------------
+                                  0.09   slack (MET)
+
+
+min_report_end
+sky130_fd_sc_hd__dfbbn_1
+Error: sta.tcl, 117 invalid command name "Obtener"
+child process exited abnormally
+
+[ERROR]: Failed to package reproducible.
+[ERROR]: Flow failed.

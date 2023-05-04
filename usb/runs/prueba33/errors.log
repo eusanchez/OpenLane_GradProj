@@ -1,0 +1,17 @@
+[ERROR]: during executing openroad script /openlane/scripts/openroad/sta.tcl
+[ERROR]: Exit code: 1
+[ERROR]: full log: designs/usb/runs/prueba33/logs/synthesis/2-sta.log
+[ERROR]: Last 10 lines:
+
+min_report_end
+REPORTE_ANA
+sky130_fd_sc_hd__dfbbn_1 sky130_fd_sc_hd__dfbbn_2 sky130_fd_sc_hd__dfbbp_1 sky130_fd_sc_hd__dfbbp_2 sky130_fd_sc_hd__dfrbp_1 sky130_fd_sc_hd__dfrbp_2 sky130_fd_sc_hd__dfrtn_1 sky130_fd_sc_hd__dfrtp_1 sky130_fd_sc_hd__dfrtp_2 sky130_fd_sc_hd__dfrtp_4 sky130_fd_sc_hd__dfsbp_1 sky130_fd_sc_hd__dfsbp_2 sky130_fd_sc_hd__dfstp_1 sky130_fd_sc_hd__dfstp_2 sky130_fd_sc_hd__dfstp_4 sky130_fd_sc_hd__dfxbp_1 sky130_fd_sc_hd__dfxbp_2 sky130_fd_sc_hd__dfxtp_1 sky130_fd_sc_hd__dfxtp_2 sky130_fd_sc_hd__dfxtp_4 {}
+
+===========================================================================
+report_checks -path_delay FF MIN (Hold)
+============================================================================
+Error: sta.tcl, 89 invalid command name "Iterar"
+child process exited abnormally
+
+[ERROR]: Failed to package reproducible.
+[ERROR]: Flow failed.

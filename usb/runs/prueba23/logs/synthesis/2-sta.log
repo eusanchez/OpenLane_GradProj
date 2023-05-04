@@ -1,0 +1,532 @@
+OpenROAD 0b8b7ae255f8fbbbefa57d443949b84e73eed757 
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+[INFO ODB-0222] Reading LEF file: /openlane/designs/usb/runs/prueba23/tmp/merged.nom.lef
+[INFO ODB-0223]     Created 13 technology layers
+[INFO ODB-0224]     Created 25 technology vias
+[INFO ODB-0225]     Created 441 library cells
+[INFO ODB-0226] Finished LEF file:  /openlane/designs/usb/runs/prueba23/tmp/merged.nom.lef
+if {[info exists ::env(CLOCK_PORT)] && $::env(CLOCK_PORT) != ""} {
+    create_clock [get_ports $::env(CLOCK_PORT)]  -name $::env(CLOCK_PORT)  -period $::env(CLOCK_PERIOD)
+} else {
+    create_clock -name __VIRTUAL_CLK__ -period $::env(CLOCK_PERIOD)
+    set ::env(CLOCK_PORT) __VIRTUAL_CLK__
+}
+set input_delay_value [expr $::env(CLOCK_PERIOD) * $::env(IO_PCT)]
+set output_delay_value [expr $::env(CLOCK_PERIOD) * $::env(IO_PCT)]
+puts "\[INFO\]: Setting output delay to: $output_delay_value"
+[INFO]: Setting output delay to: 3.0
+puts "\[INFO\]: Setting input delay to: $input_delay_value"
+[INFO]: Setting input delay to: 3.0
+set_max_fanout $::env(SYNTH_MAX_FANOUT) [current_design]
+set clk_input [get_port $::env(CLOCK_PORT)]
+set clk_indx [lsearch [all_inputs] $clk_input]
+set all_inputs_wo_clk [lreplace [all_inputs] $clk_indx $clk_indx ""]
+#set rst_input [get_port resetn]
+#set rst_indx [lsearch [all_inputs] $rst_input]
+#set all_inputs_wo_clk_rst [lreplace $all_inputs_wo_clk $rst_indx $rst_indx ""]
+set all_inputs_wo_clk_rst $all_inputs_wo_clk
+# correct resetn
+set_input_delay $input_delay_value  -clock [get_clocks $::env(CLOCK_PORT)] $all_inputs_wo_clk_rst
+#set_input_delay 0.0 -clock [get_clocks $::env(CLOCK_PORT)] {resetn}
+set_output_delay $output_delay_value  -clock [get_clocks $::env(CLOCK_PORT)] [all_outputs]
+if { ![info exists ::env(SYNTH_CLK_DRIVING_CELL)] } {
+    set ::env(SYNTH_CLK_DRIVING_CELL) $::env(SYNTH_DRIVING_CELL)
+}
+if { ![info exists ::env(SYNTH_CLK_DRIVING_CELL_PIN)] } {
+    set ::env(SYNTH_CLK_DRIVING_CELL_PIN) $::env(SYNTH_DRIVING_CELL_PIN)
+}
+set_driving_cell -lib_cell $::env(SYNTH_DRIVING_CELL) -pin $::env(SYNTH_DRIVING_CELL_PIN) $all_inputs_wo_clk_rst
+set_driving_cell -lib_cell $::env(SYNTH_CLK_DRIVING_CELL) -pin $::env(SYNTH_CLK_DRIVING_CELL_PIN) $clk_input
+set cap_load [expr $::env(SYNTH_CAP_LOAD) / 1000.0]
+puts "\[INFO\]: Setting load to: $cap_load"
+[INFO]: Setting load to: 0.033442
+set_load  $cap_load [all_outputs]
+puts "\[INFO\]: Setting clock uncertainity to: $::env(SYNTH_CLOCK_UNCERTAINITY)"
+[INFO]: Setting clock uncertainity to: 0.25
+set_clock_uncertainty $::env(SYNTH_CLOCK_UNCERTAINITY) [get_clocks $::env(CLOCK_PORT)]
+puts "\[INFO\]: Setting clock transition to: $::env(SYNTH_CLOCK_TRANSITION)"
+[INFO]: Setting clock transition to: 0.15
+set_clock_transition $::env(SYNTH_CLOCK_TRANSITION) [get_clocks $::env(CLOCK_PORT)]
+puts "\[INFO\]: Setting timing derate to: [expr {$::env(SYNTH_TIMING_DERATE) * 10}] %"
+[INFO]: Setting timing derate to: 0.5 %
+set_timing_derate -early [expr {1-$::env(SYNTH_TIMING_DERATE)}]
+set_timing_derate -late [expr {1+$::env(SYNTH_TIMING_DERATE)}]
+min_report
+
+===========================================================================
+report_checks -path_delay min (Hold)
+============================================================================
+Startpoint: _1601_ (rising edge-triggered flip-flop clocked by clk_48)
+Endpoint: _1443_ (removal check against rising-edge clock clk_48)
+Path Group: **async_default**
+Path Type: min
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.15    0.00    0.00   clock clk_48 (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                  0.15    0.00    0.00 ^ _1601_/CLK (sky130_fd_sc_hd__dfrtp_2)
+                  0.11    0.41    0.41 ^ _1601_/Q (sky130_fd_sc_hd__dfrtp_2)
+     6    0.02                           tx.state[0] (net)
+                  0.11    0.00    0.41 ^ _0870_/A (sky130_fd_sc_hd__buf_1)
+                  0.17    0.18    0.59 ^ _0870_/X (sky130_fd_sc_hd__buf_1)
+     6    0.01                           _0400_ (net)
+                  0.17    0.00    0.60 ^ _0930_/A (sky130_fd_sc_hd__buf_1)
+                  0.19    0.20    0.79 ^ _0930_/X (sky130_fd_sc_hd__buf_1)
+     6    0.02                           _0452_ (net)
+                  0.19    0.00    0.80 ^ _0932_/A2 (sky130_fd_sc_hd__o31a_2)
+                  0.31    0.35    1.15 ^ _0932_/X (sky130_fd_sc_hd__o31a_2)
+    16    0.06                           tx.tx_crc.rst_n (net)
+                  0.31    0.00    1.15 ^ _1443_/SET_B (sky130_fd_sc_hd__dfstp_2)
+                                  1.15   data arrival time
+
+                  0.15    0.00    0.00   clock clk_48 (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          0.25    0.25   clock uncertainty
+                          0.00    0.25   clock reconvergence pessimism
+                                  0.25 ^ _1443_/CLK (sky130_fd_sc_hd__dfstp_2)
+                          0.16    0.41   library removal time
+                                  0.41   data required time
+-----------------------------------------------------------------------------
+                                  0.41   data required time
+                                 -1.15   data arrival time
+-----------------------------------------------------------------------------
+                                  0.74   slack (MET)
+
+
+Startpoint: _1592_ (rising edge-triggered flip-flop clocked by clk_48)
+Endpoint: _1593_ (rising edge-triggered flip-flop clocked by clk_48)
+Path Group: clk_48
+Path Type: min
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.15    0.00    0.00   clock clk_48 (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                  0.15    0.00    0.00 ^ _1592_/CLK (sky130_fd_sc_hd__dfxtp_2)
+                  0.03    0.33    0.33 v _1592_/Q (sky130_fd_sc_hd__dfxtp_2)
+     2    0.00                           recv.se0_filter.r[2] (net)
+                  0.03    0.00    0.33 v _1593_/D (sky130_fd_sc_hd__dfxtp_2)
+                                  0.33   data arrival time
+
+                  0.15    0.00    0.00   clock clk_48 (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          0.25    0.25   clock uncertainty
+                          0.00    0.25   clock reconvergence pessimism
+                                  0.25 ^ _1593_/CLK (sky130_fd_sc_hd__dfxtp_2)
+                         -0.02    0.23   library hold time
+                                  0.23   data required time
+-----------------------------------------------------------------------------
+                                  0.23   data required time
+                                 -0.33   data arrival time
+-----------------------------------------------------------------------------
+                                  0.09   slack (MET)
+
+
+min_report_end
+REPORTE_ANA
+
+===========================================================================
+report_checks -path_delay FF MIN (Hold)
+============================================================================
+[WARNING STA-0322] instance 'sky130_fd_sc_hd__dfbbn_1' not found.
+[WARNING STA-0322] instance 'sky130_fd_sc_hd__dfbbn_2' not found.
+[WARNING STA-0322] instance 'sky130_fd_sc_hd__dfxtp_1' not found.
+[WARNING STA-0322] instance 'sky130_fd_sc_hd__dfxtp_2' not found.
+Startpoint: _1591_ (rising edge-triggered flip-flop clocked by clk_48)
+Endpoint: _1592_ (rising edge-triggered flip-flop clocked by clk_48)
+Path Group: clk_48
+Path Type: max
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.15    0.00    0.00   clock clk_48 (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                  0.15    0.00    0.00 ^ _1591_/CLK (sky130_fd_sc_hd__dfxtp_2)
+                  0.04    0.38    0.38 v _1591_/Q (sky130_fd_sc_hd__dfxtp_2)
+     4    0.01                           recv.se0_filter.r[1] (net)
+                  0.04    0.00    0.38 v _1592_/D (sky130_fd_sc_hd__dfxtp_2)
+                                  0.38   data arrival time
+
+                  0.15   15.00   15.00   clock clk_48 (rise edge)
+                          0.00   15.00   clock network delay (ideal)
+                         -0.25   14.75   clock uncertainty
+                          0.00   14.75   clock reconvergence pessimism
+                                 14.75 ^ _1592_/CLK (sky130_fd_sc_hd__dfxtp_2)
+                         -0.09   14.66   library setup time
+                                 14.66   data required time
+-----------------------------------------------------------------------------
+                                 14.66   data required time
+                                 -0.38   data arrival time
+-----------------------------------------------------------------------------
+                                 14.28   slack (MET)
+
+
+_1592_
+REPORTE_ANA_end
+max_report
+
+===========================================================================
+report_checks -path_delay max (Setup)
+============================================================================
+Startpoint: rst_n (input port clocked by clk_48)
+Endpoint: _1550_ (recovery check against rising-edge clock clk_48)
+Path Group: **async_default**
+Path Type: max
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.15    0.00    0.00   clock clk_48 (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          3.00    3.00 ^ input external delay
+                  1.56    1.13    4.13 ^ rst_n (in)
+    95    0.35                           rst_n (net)
+                  1.56    0.00    4.13 ^ _0927_/B (sky130_fd_sc_hd__and2_2)
+                  0.06    0.32    4.45 ^ _0927_/X (sky130_fd_sc_hd__and2_2)
+     1    0.00                           _0450_ (net)
+                  0.06    0.00    4.45 ^ _0928_/A (sky130_fd_sc_hd__buf_1)
+                  0.87    0.69    5.14 ^ _0928_/X (sky130_fd_sc_hd__buf_1)
+    21    0.07                           recv.sm.crc16.rst_n (net)
+                  0.87    0.00    5.15 ^ _1550_/SET_B (sky130_fd_sc_hd__dfstp_2)
+                                  5.15   data arrival time
+
+                  0.15   15.00   15.00   clock clk_48 (rise edge)
+                          0.00   15.00   clock network delay (ideal)
+                         -0.25   14.75   clock uncertainty
+                          0.00   14.75   clock reconvergence pessimism
+                                 14.75 ^ _1550_/CLK (sky130_fd_sc_hd__dfstp_2)
+                          0.13   14.88   library recovery time
+                                 14.88   data required time
+-----------------------------------------------------------------------------
+                                 14.88   data required time
+                                 -5.15   data arrival time
+-----------------------------------------------------------------------------
+                                  9.73   slack (MET)
+
+
+Startpoint: rst_n (input port clocked by clk_48)
+Endpoint: _1472_ (rising edge-triggered flip-flop clocked by clk_48)
+Path Group: clk_48
+Path Type: max
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.15    0.00    0.00   clock clk_48 (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          3.00    3.00 ^ input external delay
+                  1.56    1.13    4.13 ^ rst_n (in)
+    95    0.35                           rst_n (net)
+                  1.56    0.00    4.13 ^ _1053_/B1 (sky130_fd_sc_hd__o31a_2)
+                  0.10    0.39    4.52 ^ _1053_/X (sky130_fd_sc_hd__o31a_2)
+     3    0.01                           _0536_ (net)
+                  0.10    0.01    4.52 ^ _1055_/B1 (sky130_fd_sc_hd__o211ai_2)
+                  0.09    0.12    4.64 v _1055_/Y (sky130_fd_sc_hd__o211ai_2)
+     3    0.01                           _0538_ (net)
+                  0.09    0.00    4.65 v _1056_/A (sky130_fd_sc_hd__buf_1)
+                  0.13    0.20    4.85 v _1056_/X (sky130_fd_sc_hd__buf_1)
+     6    0.02                           _0539_ (net)
+                  0.13    0.00    4.85 v _1076_/B1 (sky130_fd_sc_hd__a21o_2)
+                  0.03    0.22    5.07 v _1076_/X (sky130_fd_sc_hd__a21o_2)
+     1    0.00                           _0555_ (net)
+                  0.03    0.00    5.08 v _1077_/B2 (sky130_fd_sc_hd__a22o_2)
+                  0.04    0.22    5.30 v _1077_/X (sky130_fd_sc_hd__a22o_2)
+     1    0.00                           _0045_ (net)
+                  0.04    0.00    5.30 v _1472_/D (sky130_fd_sc_hd__dfxtp_2)
+                                  5.30   data arrival time
+
+                  0.15   15.00   15.00   clock clk_48 (rise edge)
+                          0.00   15.00   clock network delay (ideal)
+                         -0.25   14.75   clock uncertainty
+                          0.00   14.75   clock reconvergence pessimism
+                                 14.75 ^ _1472_/CLK (sky130_fd_sc_hd__dfxtp_2)
+                         -0.09   14.66   library setup time
+                                 14.66   data required time
+-----------------------------------------------------------------------------
+                                 14.66   data required time
+                                 -5.30   data arrival time
+-----------------------------------------------------------------------------
+                                  9.37   slack (MET)
+
+
+max_report_end
+check_report
+
+===========================================================================
+report_checks -unconstrained
+============================================================================
+Startpoint: rst_n (input port clocked by clk_48)
+Endpoint: _1550_ (recovery check against rising-edge clock clk_48)
+Path Group: **async_default**
+Path Type: max
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.15    0.00    0.00   clock clk_48 (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          3.00    3.00 ^ input external delay
+                  1.56    1.13    4.13 ^ rst_n (in)
+    95    0.35                           rst_n (net)
+                  1.56    0.00    4.13 ^ _0927_/B (sky130_fd_sc_hd__and2_2)
+                  0.06    0.32    4.45 ^ _0927_/X (sky130_fd_sc_hd__and2_2)
+     1    0.00                           _0450_ (net)
+                  0.06    0.00    4.45 ^ _0928_/A (sky130_fd_sc_hd__buf_1)
+                  0.87    0.69    5.14 ^ _0928_/X (sky130_fd_sc_hd__buf_1)
+    21    0.07                           recv.sm.crc16.rst_n (net)
+                  0.87    0.00    5.15 ^ _1550_/SET_B (sky130_fd_sc_hd__dfstp_2)
+                                  5.15   data arrival time
+
+                  0.15   15.00   15.00   clock clk_48 (rise edge)
+                          0.00   15.00   clock network delay (ideal)
+                         -0.25   14.75   clock uncertainty
+                          0.00   14.75   clock reconvergence pessimism
+                                 14.75 ^ _1550_/CLK (sky130_fd_sc_hd__dfstp_2)
+                          0.13   14.88   library recovery time
+                                 14.88   data required time
+-----------------------------------------------------------------------------
+                                 14.88   data required time
+                                 -5.15   data arrival time
+-----------------------------------------------------------------------------
+                                  9.73   slack (MET)
+
+
+Startpoint: rst_n (input port clocked by clk_48)
+Endpoint: _1472_ (rising edge-triggered flip-flop clocked by clk_48)
+Path Group: clk_48
+Path Type: max
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.15    0.00    0.00   clock clk_48 (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          3.00    3.00 ^ input external delay
+                  1.56    1.13    4.13 ^ rst_n (in)
+    95    0.35                           rst_n (net)
+                  1.56    0.00    4.13 ^ _1053_/B1 (sky130_fd_sc_hd__o31a_2)
+                  0.10    0.39    4.52 ^ _1053_/X (sky130_fd_sc_hd__o31a_2)
+     3    0.01                           _0536_ (net)
+                  0.10    0.01    4.52 ^ _1055_/B1 (sky130_fd_sc_hd__o211ai_2)
+                  0.09    0.12    4.64 v _1055_/Y (sky130_fd_sc_hd__o211ai_2)
+     3    0.01                           _0538_ (net)
+                  0.09    0.00    4.65 v _1056_/A (sky130_fd_sc_hd__buf_1)
+                  0.13    0.20    4.85 v _1056_/X (sky130_fd_sc_hd__buf_1)
+     6    0.02                           _0539_ (net)
+                  0.13    0.00    4.85 v _1076_/B1 (sky130_fd_sc_hd__a21o_2)
+                  0.03    0.22    5.07 v _1076_/X (sky130_fd_sc_hd__a21o_2)
+     1    0.00                           _0555_ (net)
+                  0.03    0.00    5.08 v _1077_/B2 (sky130_fd_sc_hd__a22o_2)
+                  0.04    0.22    5.30 v _1077_/X (sky130_fd_sc_hd__a22o_2)
+     1    0.00                           _0045_ (net)
+                  0.04    0.00    5.30 v _1472_/D (sky130_fd_sc_hd__dfxtp_2)
+                                  5.30   data arrival time
+
+                  0.15   15.00   15.00   clock clk_48 (rise edge)
+                          0.00   15.00   clock network delay (ideal)
+                         -0.25   14.75   clock uncertainty
+                          0.00   14.75   clock reconvergence pessimism
+                                 14.75 ^ _1472_/CLK (sky130_fd_sc_hd__dfxtp_2)
+                         -0.09   14.66   library setup time
+                                 14.66   data required time
+-----------------------------------------------------------------------------
+                                 14.66   data required time
+                                 -5.30   data arrival time
+-----------------------------------------------------------------------------
+                                  9.37   slack (MET)
+
+
+
+===========================================================================
+report_checks --slack_max -0.01
+============================================================================
+No paths found.
+check_report_end
+check_slew
+
+===========================================================================
+ report_check_types -max_slew -max_cap -max_fanout -violators
+============================================================================
+max slew
+
+Pin                                    Limit    Slew   Slack
+------------------------------------------------------------
+rst_n                                   1.50    1.56   -0.06 (VIOLATED)
+_1433_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1434_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1436_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1437_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1438_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1439_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1440_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1441_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1442_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1459_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1460_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1461_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1462_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1463_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1464_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1465_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1466_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1467_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1476_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1477_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1478_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1479_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1480_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1481_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1482_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1483_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1484_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1512_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1513_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1514_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1515_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1516_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1517_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1518_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1519_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1520_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1521_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1522_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1523_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1524_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1525_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1526_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1527_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1528_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1529_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1530_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1531_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1532_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1533_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1534_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1535_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1536_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1537_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1538_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1539_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1540_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1541_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1542_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1543_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1544_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1545_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1546_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1547_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1548_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1549_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1580_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1581_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1582_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1583_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1584_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1585_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1586_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1587_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1588_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1589_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1601_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1602_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1603_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1604_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1605_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1606_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1607_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1608_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1619_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1620_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1621_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1622_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1623_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1624_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1625_/RESET_B                          1.50    1.56   -0.06 (VIOLATED)
+_1435_/SET_B                            1.50    1.56   -0.06 (VIOLATED)
+_1511_/SET_B                            1.50    1.56   -0.06 (VIOLATED)
+_0932_/B1                               1.50    1.56   -0.06 (VIOLATED)
+_1053_/B1                               1.50    1.56   -0.06 (VIOLATED)
+_0927_/B                                1.50    1.56   -0.06 (VIOLATED)
+
+max fanout
+
+Pin                                   Limit Fanout  Slack
+---------------------------------------------------------
+rst_n                                     6     95    -89 (VIOLATED)
+_0928_/X                                  6     21    -15 (VIOLATED)
+_0932_/X                                  6     16    -10 (VIOLATED)
+_1596_/Q                                  6      7        (VIOLATED)
+
+max capacitance
+
+Pin                                    Limit     Cap   Slack
+------------------------------------------------------------
+rst_n                                   0.33    0.35   -0.02 (VIOLATED)
+
+
+===========================================================================
+max slew violation count 96
+max fanout violation count 4
+max cap violation count 1
+============================================================================
+check_slew_end
+tns_report
+
+===========================================================================
+ report_tns
+============================================================================
+tns 0.00
+tns_report_end
+wns_report
+
+===========================================================================
+ report_wns
+============================================================================
+wns 0.00
+wns_report_end
+worst_slack
+
+===========================================================================
+ report_worst_slack -max (Setup)
+============================================================================
+worst slack 9.37
+
+===========================================================================
+ report_worst_slack -min (Hold)
+============================================================================
+worst slack 0.09
+worst_slack_end
+clock_skew
+
+===========================================================================
+ report_clock_skew
+============================================================================
+Clock clk_48
+Latency      CRPR       Skew
+_1493_/CLK ^
+   1.25
+_1460_/CLK ^
+   1.13      0.00       0.12
+
+clock_skew_end
+power_report
+
+===========================================================================
+ report_power
+============================================================================
+Group                  Internal  Switching    Leakage      Total
+                          Power      Power      Power      Power (Watts)
+----------------------------------------------------------------
+Sequential             5.80e-04   4.43e-05   1.58e-09   6.25e-04  74.4%
+Combinational          1.27e-04   8.77e-05   2.06e-09   2.15e-04  25.6%
+Macro                  0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
+Pad                    0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
+----------------------------------------------------------------
+Total                  7.07e-04   1.32e-04   3.63e-09   8.39e-04 100.0%
+                          84.3%      15.7%       0.0%
+power_report_end
+area_report
+
+===========================================================================
+ report_design_area
+============================================================================
+Design area 10783 u^2 100% utilization.
+area_report_end

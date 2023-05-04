@@ -1,0 +1,5 @@
+[WARNING]: A netlist at /openlane/designs/usb/runs/prueba7/results/synthesis/usb.v already exists. Synthesis will be skipped.
+[WARNING]: Current core area is too small for a power grid. The power grid will be minimized.
+[WARNING]: There are max slew violations in the design at the typical corner. Please refer to 'designs/usb/runs/prueba7/reports/signoff/30-rcx_sta.slew.rpt'.
+[WARNING]: There are max fanout violations in the design at the typical corner. Please refer to 'designs/usb/runs/prueba7/reports/signoff/30-rcx_sta.slew.rpt'.
+[WARNING]: There are max capacitance violations in the design at the typical corner. Please refer to 'designs/usb/runs/prueba7/reports/signoff/30-rcx_sta.slew.rpt'.

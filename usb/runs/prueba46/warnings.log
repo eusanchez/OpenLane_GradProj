@@ -1,0 +1,2 @@
+[WARNING]: Current core area is too small for a power grid. The power grid will be minimized.
+[WARNING]: There are max fanout violations in the design at the typical corner. Please refer to 'designs/usb/runs/prueba46/reports/signoff/28-rcx_sta.slew.rpt'.
