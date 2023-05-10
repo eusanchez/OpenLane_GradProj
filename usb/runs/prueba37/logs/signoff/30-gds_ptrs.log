@@ -1,9 +1,0 @@
-
-Magic 8.3 revision 311 - Compiled on Fri Jun 10 14:31:41 UTC 2022.
-Starting magic under Tcl interpreter
-Using the terminal as the console.
-Using NULL graphics device.
-Processing system .magicrc file
-Sourcing design .magicrc for technology sky130A ...
-2 Magic internal units = 1 Lambda
-Input style sky130(vendor): scaleFactor=2, multiplier=2

@@ -1,2 +1,0 @@
-[WARNING]: A netlist at /openlane/designs/usb/runs/prueba27/results/synthesis/usb.v already exists. Synthesis will be skipped.
-[WARNING]: Current core area is too small for a power grid. The power grid will be minimized.

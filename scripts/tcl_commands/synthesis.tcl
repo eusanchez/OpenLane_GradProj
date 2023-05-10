@@ -127,7 +127,7 @@ proc run_synthesis {args} {
     run_sta -pre_cts -log $::env(synthesis_logs)/sta.log
     set ::env(LAST_TIMING_REPORT_TAG) [index_file $::env(synthesis_reports)/syn_sta]
 
-    run_sta -pre_cts -log $::env(synthesis_logs)/sta_ana.log
+    run_sta_ana -pre_cts -log $::env(synthesis_logs)/sta_ana.log
     set ::env(LAST_TIMING_REPORT_TAG) [index_file $::env(synthesis_reports)/syn_sta]
 
     if { $::env(RUN_SIMPLE_CTS) && $::env(CLOCK_TREE_SYNTH) } {
