@@ -196,6 +196,16 @@ proc run_tcl_script {args} {
         } else {
             set args "$::env(OPENROAD_BIN) -exit $script |& tee $::env(TERMINAL_OUTPUT) $arg_values(-indexed_log)"
         }
+
+##########################################################
+#    } elseif { $tool == "ana" } {
+#        if { [info exists flag_map(-gui)] } {
+#            set args "$::env(OPENROAD_BIN) -gui $sta_ana.tcl |& tee $::env(TERMINAL_OUTPUT) #$arg_values(-indexed_log)"
+#        } else {
+#            set args "$::env(OPENROAD_BIN) -exit $sta_ana.tcl |& tee $::env(TERMINAL_OUTPUT) #$arg_values(-indexed_log)"
+        }
+######################################################
+
     } elseif { $arg_values(-tool) == "magic" } {
         set args "magic -noconsole -dnull -rcfile $::env(MAGIC_MAGICRC) < $script |& tee $::env(TERMINAL_OUTPUT) $arg_values(-indexed_log)"
     } else {
@@ -255,6 +265,10 @@ proc run_tcl_script {args} {
 proc run_openroad_script {args} {
     run_tcl_script -tool openroad -no_consume {*}$args
 }
+
+#proc run_openroad_script_ana {args} {
+#    run_tcl_script -tool ana -no_consume {*}$args
+#}
 
 proc run_magic_script {args} {
     run_tcl_script -tool magic -no_consume {*}$args
