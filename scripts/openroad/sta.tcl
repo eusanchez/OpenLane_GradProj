@@ -62,7 +62,7 @@ puts "==========================================================================
 report_checks -path_delay min -fields {slew cap input nets fanout} -format full_clock_expanded -group_count 5
 puts "min_report_end"
 
-#ESTO SE AGREGO POR INVESTIGACION
+# #ESTO SE AGREGO POR INVESTIGACION
 #     # Abrir el archivo de texto que contiene la lista de tipos de flip-flops
 #     set file [open "tipos_ff.txt" r]
 #     # Leer la lista de tipos de flip-flops y dividirla en una lista de elementos

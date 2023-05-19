@@ -61,9 +61,13 @@ proc groute_antenna_extract {args} {
 
 proc global_routing_fastroute {args} {
     set saveLOG [index_file $::env(routing_logs)/global.log]
+    set saveLOGana [index_file $::env(routing_logs)/global_ana.log]
 
     translate_min_max_layer_variables
     run_openroad_script $::env(SCRIPTS_DIR)/openroad/groute.tcl -indexed_log $saveLOG
+
+    run_openroad_script $::env(SCRIPTS_DIR)/openroad/groute_ana.tcl -indexed_log $saveLOGana
+
     if { $::env(DIODE_INSERTION_STRATEGY) == 3 } {
         puts_info "Starting FastRoute Antenna Repair Iterations..."
         set_def $::env(SAVE_DEF)
@@ -486,6 +490,7 @@ proc run_resizer_timing_routing {args} {
         set ::env(SAVE_DEF) [index_file $::env(routing_tmpfiles)/resizer_timing.def]
         set ::env(SAVE_SDC) [index_file $::env(routing_tmpfiles)/resizer_timing.sdc]
         run_openroad_script $::env(SCRIPTS_DIR)/openroad/resizer_routing_timing.tcl -indexed_log [index_file $::env(routing_logs)/resizer.log]
+        run_openroad_script $::env(SCRIPTS_DIR)/openroad/resizer_routing_timing_ana.tcl -indexed_log [index_file $::env(routing_logs)/resizer_ana.log]
         set_def $::env(SAVE_DEF)
         set ::env(CURRENT_SDC) $::env(SAVE_SDC)
 
