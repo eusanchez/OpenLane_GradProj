@@ -77,19 +77,11 @@ proc run_cts {args} {
 		check_cts_clock_nets
 		set ::env(cts_reports) $report_tag_holder
 
-#################################################################
-		# run_openroad_script_ana $::env(SCRIPTS_DIR)/openroad/cts.tcl -indexed_log [index_file $::env(cts_logs)/cts_ana.log]
-		# check_cts_clock_nets
-		# set ::env(cts_reports) $report_tag_holder
-
-		# TIMER::timer_stop
-		# exec echo "[TIMER::get_runtime]" | python3 $::env(SCRIPTS_DIR)/write_runtime.py "cts"
-###################################################################
-
-#########################################################################################
-		#run_sta_ana_ps -log $::env(cts_logs)/cts_ana.log
-		#set ::env(cts_reports) [index_file $::env(cts_logs)/cts.log]
-#####################################################################################
+		###MODIFICACION ANA
+		run_openroad_script $::env(SCRIPTS_DIR)/openroad/cts_ana.tcl -indexed_log [index_file $::env(cts_logs)/cts_ana.log]
+		check_cts_clock_nets
+		set ::env(cts_reports) $report_tag_holder
+		#MODIFICACION ANA
 
 
 		set_def $::env(SAVE_DEF)

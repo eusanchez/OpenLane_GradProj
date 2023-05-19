@@ -32,6 +32,15 @@ proc global_placement_or {args} {
         flow_fail
     }
 
+    #ESTO SE AGREGO POR INVESTIGACION
+    run_openroad_script $::env(SCRIPTS_DIR)/openroad/replace_ana.tcl -indexed_log [index_file $::env(placement_logs)/global_ana.log]
+    # sometimes replace fails with a ZERO exit code; the following is a workaround
+    # until the cause is found and fixed
+    if { ! [file exists $::env(SAVE_DEF)] } {
+        puts_err "Global placement has failed to produce a DEF file."
+        flow_fail
+    }
+
     check_replace_divergence
 
     TIMER::timer_stop

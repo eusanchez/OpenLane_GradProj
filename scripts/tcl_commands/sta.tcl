@@ -64,9 +64,7 @@ proc run_sta {args} {
 
 #######################################################################################
 #######################################################################################
-#######################################################################################
-#######################################################################################
-
+#ESTO SE AGREGO POR INVESTIGACION
 proc run_sta_ana {args} {
     set options {
         {-log required}
@@ -105,8 +103,8 @@ proc run_sta_ana {args} {
     if {[info exists ::env(CLOCK_PORT)]} {
         if { $multi_corner == 1 } {
             puts_info "Great"
-            #run_openroad_script $::env(SCRIPTS_DIR)/openroad/sta_multi_corner.tcl \
-            #    -indexed_log $log
+            run_openroad_script $::env(SCRIPTS_DIR)/openroad/sta_multi_corner.tcl \
+                -indexed_log $log
         } else {
             run_openroad_script $::env(SCRIPTS_DIR)/openroad/sta_ana.tcl \
                 -indexed_log $log
@@ -118,57 +116,6 @@ proc run_sta_ana {args} {
     exec echo "[TIMER::get_runtime]" | python3 $::env(SCRIPTS_DIR)/write_runtime.py "sta - openroad"
 }
 
-
-proc run_sta_ana_ps {args} {
-    set options {
-        {-log required}
-        {-lef optional}
-        {-process_corner optional}
-    }
-    set flags {
-        -multi_corner
-        -pre_cts
-    }
-    parse_key_args "run_sta_ana" args arg_values $options flags_map $flags
-    set multi_corner [info exists flags_map(-multi_corner)]
-
-    set_if_unset arg_values(-lef) $::env(MERGED_LEF)
-    set ::env(STA_LEF) $arg_values(-lef)
-    set ::env(RUN_STANDALONE) 1
-
-    increment_index
-    TIMER::timer_start
-
-    set corner_prefix "Single-Corner"
-    if { $multi_corner } {
-        set corner_prefix "Multi-Corner"
-    }
-    set process_corner_postfix ""
-    if { [info exists arg_values(-process_corner)]} {
-        set process_corner_postfix " at the $arg_values(-process_corner) process corner"
-    }
-    puts_info "Running $corner_prefix Static Timing Analysis$process_corner_postfix..."
-
-    set log [index_file $arg_values(-log)]
-
-    if {[info exists ::env(CLOCK_PORT)]} {
-        if { $multi_corner == 1 } {
-            puts_info "Great"
-            #run_openroad_script $::env(SCRIPTS_DIR)/openroad/sta_multi_corner.tcl \
-            #    -indexed_log $log
-        } else {
-            run_openroad_script $::env(SCRIPTS_DIR)/openroad/sta_ana.tcl \
-                -indexed_log $log
-        }
-    } else {
-        puts_warn "CLOCK_PORT is not set. STA will be skipped..."
-    }
-    TIMER::timer_stop
-    exec echo "[TIMER::get_runtime]" | python3 $::env(SCRIPTS_DIR)/write_runtime.py "sta - openroad"
-}
-
-#######################################################################################
-#######################################################################################
 #######################################################################################
 #######################################################################################
 
@@ -220,6 +167,11 @@ proc run_parasitics_sta {args} {
                 set ::env(LAST_TIMING_REPORT_TAG) [index_file $::env(signoff_reports)/rcx_sta]
 
                 set ::env(CURRENT_SDF) $::env(SAVE_SDF)
+
+                #ESTO SE AGREGO POR INVESTIGACION
+                run_sta_ana\
+                    -log $::env(signoff_logs)/parasitics_sta_ana.log\
+                    -process_corner $process_corner
             }
 
             run_sta\
@@ -228,11 +180,12 @@ proc run_parasitics_sta {args} {
                 -process_corner $process_corner\
                 -multi_corner
 
+            #ESTO SE AGREGO POR INVESTIGACION
             run_sta_ana\
                 -lef $::env($lef)\
                 -log $log_name\
                 -process_corner $process_corner\
-                -multi_corner
+
         }
     }
 }
