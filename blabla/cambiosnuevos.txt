@@ -1,0 +1,316 @@
+MOD1
+
+set ::env(DESIGN_NAME) "blabla"
+
+set ::env(VERILOG_FILES) "$::env(DESIGN_DIR)/src/blabla.v"
+
+set ::env(CLOCK_PORT) "clk"
+set ::env(CLOCK_NET) $::env(CLOCK_PORT)
+set ::env(CLOCK_PERIOD) 50
+
+# design has a lot of pins, needs an absolute size
+set ::env(FP_SIZING) "absolute"
+set ::env(DIE_AREA) {0 0 1200 1200}
+
+#SYNTHESIS
+set ::env(SYNTH_CLOCK_UNCERTAINTY) 0.5
+set ::env(IO_PCT) 0.5
+set ::env(SYNTH_FLAT_TOP) 1
+set ::env(SYNTH_SIZING) 1
+
+
+#ROUTING
+#set ::env(GLB_RESIZER_MAX_SLEW_MARGIN) 20
+#set ::env(GLB_RESIZER_MAX_CAP_MARGIN) 30
+#set ::env(GRT_ALLOW_CONGESTION) 1
+
+
+set filename $::env(DESIGN_DIR)/$::env(PDK)_$::env(STD_CELL_LIBRARY)_config.tcl
+if { [file exists $filename] == 1} {
+	source $filename
+}
+
+MOD2
+
+set ::env(DESIGN_NAME) "blabla"
+
+set ::env(VERILOG_FILES) "$::env(DESIGN_DIR)/src/blabla.v"
+
+set ::env(CLOCK_PORT) "clk"
+set ::env(CLOCK_NET) $::env(CLOCK_PORT)
+set ::env(CLOCK_PERIOD) 50
+
+# design has a lot of pins, needs an absolute size
+set ::env(FP_SIZING) "absolute"
+set ::env(DIE_AREA) {0 0 1200 1200}
+
+#SYNTHESIS
+set ::env(SYNTH_BUFFERING) 0
+set ::env(SYNTH_SIZING) 1
+set ::env(SYNTH_SHARE_RESOURCES) 0
+#set ::env(SYNTH_SIZING) 1
+
+
+
+#ROUTING
+#set ::env(GLB_RESIZER_MAX_SLEW_MARGIN) 20
+#set ::env(GLB_RESIZER_MAX_CAP_MARGIN) 30
+#set ::env(GRT_ALLOW_CONGESTION) 1
+
+
+set filename $::env(DESIGN_DIR)/$::env(PDK)_$::env(STD_CELL_LIBRARY)_config.tcl
+if { [file exists $filename] == 1} {
+	source $filename
+}
+
+
+MOD3
+
+
+set ::env(DESIGN_NAME) "blabla"
+
+set ::env(VERILOG_FILES) "$::env(DESIGN_DIR)/src/blabla.v"
+
+set ::env(CLOCK_PORT) "clk"
+set ::env(CLOCK_NET) $::env(CLOCK_PORT)
+set ::env(CLOCK_PERIOD) 50
+
+# design has a lot of pins, needs an absolute size
+set ::env(FP_SIZING) "absolute"
+set ::env(DIE_AREA) {0 0 1200 1200}
+
+#SYNTHESIS
+set ::env(SYNTH_CLOCK_UNCERTAINTY) 0.8
+set ::env(IO_PCT) 0.3
+set ::env(SYNTH_FLAT_TOP) 1
+
+
+#ROUTING
+#set ::env(GLB_RESIZER_MAX_SLEW_MARGIN) 20
+#set ::env(GLB_RESIZER_MAX_CAP_MARGIN) 30
+#set ::env(GRT_ALLOW_CONGESTION) 1
+
+
+set filename $::env(DESIGN_DIR)/$::env(PDK)_$::env(STD_CELL_LIBRARY)_config.tcl
+if { [file exists $filename] == 1} {
+	source $filename
+}
+
+
+MOD4 (INCLUYE ETAPAS POST FLOORPLAN)
+
+set ::env(DESIGN_NAME) "blabla"
+
+set ::env(VERILOG_FILES) "$::env(DESIGN_DIR)/src/blabla.v"
+
+set ::env(CLOCK_PORT) "clk"
+set ::env(CLOCK_NET) $::env(CLOCK_PORT)
+set ::env(CLOCK_PERIOD) 50
+
+# design has a lot of pins, needs an absolute size
+set ::env(FP_SIZING) "absolute"
+set ::env(DIE_AREA) {0 0 1200 1200}
+
+#FLOORPLAN
+set ::env(FP_CORE_UTIL) 65
+#set ::env(FP_IO_MIN_DISTANCE) 5
+set ::env(FP_PDN_ENABLE_MACROS_GRID) 0
+
+
+set filename $::env(DESIGN_DIR)/$::env(PDK)_$::env(STD_CELL_LIBRARY)_config.tcl
+if { [file exists $filename] == 1} {
+	source $filename
+}
+
+MOD5
+
+set ::env(DESIGN_NAME) "blabla"
+
+set ::env(VERILOG_FILES) "$::env(DESIGN_DIR)/src/blabla.v"
+
+set ::env(CLOCK_PORT) "clk"
+set ::env(CLOCK_NET) $::env(CLOCK_PORT)
+set ::env(CLOCK_PERIOD) 50
+
+# design has a lot of pins, needs an absolute size
+set ::env(FP_SIZING) "absolute"
+set ::env(DIE_AREA) {0 0 1200 1200}
+
+#FLOORPLAN
+set ::env(FP_CORE_UTIL) 50
+#set ::env(FP_IO_MIN_DISTANCE) 5
+set ::env(FP_IO_MODE) 0
+
+
+set filename $::env(DESIGN_DIR)/$::env(PDK)_$::env(STD_CELL_LIBRARY)_config.tcl
+if { [file exists $filename] == 1} {
+	source $filename
+}
+
+MOD 6 (CTS)
+set ::env(DESIGN_NAME) "blabla"
+
+set ::env(VERILOG_FILES) "$::env(DESIGN_DIR)/src/blabla.v"
+
+set ::env(CLOCK_PORT) "clk"
+set ::env(CLOCK_NET) $::env(CLOCK_PORT)
+set ::env(CLOCK_PERIOD) 50
+
+# design has a lot of pins, needs an absolute size
+set ::env(FP_SIZING) "absolute"
+set ::env(DIE_AREA) {0 0 1200 1200}
+
+#CTS
+set ::env(CTS_SINK_CLUSTERING_SIZE) 50
+
+
+set filename $::env(DESIGN_DIR)/$::env(PDK)_$::env(STD_CELL_LIBRARY)_config.tcl
+if { [file exists $filename] == 1} {
+	source $filename
+}
+
+MOD7
+
+set ::env(DESIGN_NAME) "blabla"
+
+set ::env(VERILOG_FILES) "$::env(DESIGN_DIR)/src/blabla.v"
+
+set ::env(CLOCK_PORT) "clk"
+set ::env(CLOCK_NET) $::env(CLOCK_PORT)
+set ::env(CLOCK_PERIOD) 50
+
+# design has a lot of pins, needs an absolute size
+set ::env(FP_SIZING) "absolute"
+set ::env(DIE_AREA) {0 0 1200 1200}
+
+#FLOORPLAN
+set ::env(FP_ASPECT_RATIO) 0.5
+
+
+
+set filename $::env(DESIGN_DIR)/$::env(PDK)_$::env(STD_CELL_LIBRARY)_config.tcl
+if { [file exists $filename] == 1} {
+	source $filename
+}
+
+MOD8
+
+set ::env(DESIGN_NAME) "blabla"
+
+set ::env(VERILOG_FILES) "$::env(DESIGN_DIR)/src/blabla.v"
+
+set ::env(CLOCK_PORT) "clk"
+set ::env(CLOCK_NET) $::env(CLOCK_PORT)
+set ::env(CLOCK_PERIOD) 50
+
+# design has a lot of pins, needs an absolute size
+set ::env(FP_SIZING) "absolute"
+set ::env(DIE_AREA) {0 0 1200 1200}
+
+#FLOORPLAN
+set ::env(FP_ASPECT_RATIO) 0.2
+
+
+
+set filename $::env(DESIGN_DIR)/$::env(PDK)_$::env(STD_CELL_LIBRARY)_config.tcl
+if { [file exists $filename] == 1} {
+	source $filename
+}
+
+MOD9
+
+set ::env(DESIGN_NAME) "blabla"
+
+set ::env(VERILOG_FILES) "$::env(DESIGN_DIR)/src/blabla.v"
+
+set ::env(CLOCK_PORT) "clk"
+set ::env(CLOCK_NET) $::env(CLOCK_PORT)
+set ::env(CLOCK_PERIOD) 50
+
+# design has a lot of pins, needs an absolute size
+set ::env(FP_SIZING) "absolute"
+set ::env(DIE_AREA) {0 0 1200 1200}
+
+#PLACEMENT
+set ::env(PL_TARGET_DENSITY) 0.8
+
+
+
+set filename $::env(DESIGN_DIR)/$::env(PDK)_$::env(STD_CELL_LIBRARY)_config.tcl
+if { [file exists $filename] == 1} {
+	source $filename
+}
+
+MOD10
+set ::env(DESIGN_NAME) "blabla"
+
+set ::env(VERILOG_FILES) "$::env(DESIGN_DIR)/src/blabla.v"
+
+set ::env(CLOCK_PORT) "clk"
+set ::env(CLOCK_NET) $::env(CLOCK_PORT)
+set ::env(CLOCK_PERIOD) 50
+
+# design has a lot of pins, needs an absolute size
+set ::env(FP_SIZING) "absolute"
+set ::env(DIE_AREA) {0 0 1200 1200}
+
+#PLACEMENT
+set ::env(PL_SKIP_INITIAL_PLACEMENT) 1
+set ::env(PL_RANDOM_GLB_PLACEMENT) 1
+
+
+
+set filename $::env(DESIGN_DIR)/$::env(PDK)_$::env(STD_CELL_LIBRARY)_config.tcl
+if { [file exists $filename] == 1} {
+	source $filename
+}
+
+
+
+MOD11
+set ::env(DESIGN_NAME) "blabla"
+
+set ::env(VERILOG_FILES) "$::env(DESIGN_DIR)/src/blabla.v"
+
+set ::env(CLOCK_PORT) "clk"
+set ::env(CLOCK_NET) $::env(CLOCK_PORT)
+set ::env(CLOCK_PERIOD) 40
+
+# design has a lot of pins, needs an absolute size
+set ::env(FP_SIZING) "absolute"
+set ::env(DIE_AREA) {0 0 1200 1200}
+
+#PLACEMENT
+set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 0
+set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 0
+
+
+set filename $::env(DESIGN_DIR)/$::env(PDK)_$::env(STD_CELL_LIBRARY)_config.tcl
+if { [file exists $filename] == 1} {
+	source $filename
+}
+
+MOD12
+set ::env(DESIGN_NAME) "blabla"
+
+set ::env(VERILOG_FILES) "$::env(DESIGN_DIR)/src/blabla.v"
+
+set ::env(CLOCK_PORT) "clk"
+set ::env(CLOCK_NET) $::env(CLOCK_PORT)
+set ::env(CLOCK_PERIOD) 20
+
+# design has a lot of pins, needs an absolute size
+set ::env(FP_SIZING) "absolute"
+set ::env(DIE_AREA) {0 0 1200 1200}
+
+#PLACEMENT
+set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 0
+set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 0
+
+
+set filename $::env(DESIGN_DIR)/$::env(PDK)_$::env(STD_CELL_LIBRARY)_config.tcl
+if { [file exists $filename] == 1} {
+	source $filename
+}
+
+

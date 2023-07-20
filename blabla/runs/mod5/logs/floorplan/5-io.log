@@ -1,0 +1,25 @@
+OpenROAD 0b8b7ae255f8fbbbefa57d443949b84e73eed757 
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+[INFO ODB-0222] Reading LEF file: /openlane/designs/blabla/runs/mod5/tmp/merged.nom.lef
+[INFO ODB-0223]     Created 13 technology layers
+[INFO ODB-0224]     Created 25 technology vias
+[INFO ODB-0225]     Created 441 library cells
+[INFO ODB-0226] Finished LEF file:  /openlane/designs/blabla/runs/mod5/tmp/merged.nom.lef
+[INFO ODB-0127] Reading DEF file: /openlane/designs/blabla/runs/mod5/tmp/floorplan/4-initial_fp.def
+[INFO ODB-0128] Design: blabla
+[INFO ODB-0130]     Created 1420 pins.
+[INFO ODB-0131]     Created 12399 components and 91932 component-terminals.
+[INFO ODB-0133]     Created 13305 nets and 42336 connections.
+[INFO ODB-0134] Finished DEF file: /openlane/designs/blabla/runs/mod5/tmp/floorplan/4-initial_fp.def
+Found 0 macro blocks.
+Using 1u default distance from corners.
+[INFO PPL-0010] Tentative 0 to set up sections.
+[INFO PPL-0001] Number of slots          1452
+[INFO PPL-0002] Number of I/O            1420
+[INFO PPL-0003] Number of I/O w/sink     1420
+[INFO PPL-0004] Number of I/O w/o sink   1
+[INFO PPL-0005] Slots per section        200
+[INFO PPL-0006] Slots increase factor    0.01
+[INFO PPL-0008] Successfully assigned pins to sections.
+[INFO PPL-0012] I/O nets HPWL: 1269240.38 um.

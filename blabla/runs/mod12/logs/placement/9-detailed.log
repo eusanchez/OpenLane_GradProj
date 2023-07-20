@@ -1,0 +1,28 @@
+OpenROAD 0b8b7ae255f8fbbbefa57d443949b84e73eed757 
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+[INFO ODB-0222] Reading LEF file: /openlane/designs/blabla/runs/mod12/tmp/merged.unpadded.nom.lef
+[INFO ODB-0223]     Created 13 technology layers
+[INFO ODB-0224]     Created 25 technology vias
+[INFO ODB-0225]     Created 441 library cells
+[INFO ODB-0226] Finished LEF file:  /openlane/designs/blabla/runs/mod12/tmp/merged.unpadded.nom.lef
+[INFO ODB-0127] Reading DEF file: /openlane/designs/blabla/runs/mod12/tmp/placement/8-global.def
+[INFO ODB-0128] Design: blabla
+[INFO ODB-0130]     Created 1422 pins.
+[INFO ODB-0131]     Created 33275 components and 135416 component-terminals.
+[INFO ODB-0132]     Created 2 special nets and 93080 connections.
+[INFO ODB-0133]     Created 13305 nets and 42336 connections.
+[INFO ODB-0134] Finished DEF file: /openlane/designs/blabla/runs/mod12/tmp/placement/8-global.def
+Placement Analysis
+---------------------------------
+total displacement      23472.1 u
+average displacement        0.7 u
+max displacement           10.0 u
+original HPWL         2258710.6 u
+legalized HPWL        2274071.8 u
+delta HPWL                    1 %
+
+[INFO DPL-0020] Mirrored 5184 instances
+[INFO DPL-0021] HPWL before          2274071.8 u
+[INFO DPL-0022] HPWL after           2262533.2 u
+[INFO DPL-0023] HPWL delta               -0.5 %

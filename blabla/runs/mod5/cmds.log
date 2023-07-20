@@ -1,0 +1,56 @@
+Thu Jul 20 20:52:13 UTC 2023 - Executing "openroad -python /openlane/scripts/odbpy/lefutil.py get_metal_layers -o /openlane/designs/blabla/runs/mod5/tmp/layers.list /home/licit/OpenLane/pdks/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__nom.tlef"
+
+Thu Jul 20 20:52:13 UTC 2023 - Executing "/openlane/scripts/mergeLef.py -o /openlane/designs/blabla/runs/mod5/tmp/merged.unpadded.nom.lef -i /home/licit/OpenLane/pdks/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__nom.tlef /home/licit/OpenLane/pdks/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef |& tee /dev/null"
+
+Thu Jul 20 20:52:13 UTC 2023 - Executing "/openlane/scripts/mergeLef.py -o /openlane/designs/blabla/runs/mod5/tmp/merged.unpadded.min.lef -i /home/licit/OpenLane/pdks/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__min.tlef /home/licit/OpenLane/pdks/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef |& tee /dev/null"
+
+Thu Jul 20 20:52:13 UTC 2023 - Executing "/openlane/scripts/mergeLef.py -o /openlane/designs/blabla/runs/mod5/tmp/merged.unpadded.max.lef -i /home/licit/OpenLane/pdks/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__max.tlef /home/licit/OpenLane/pdks/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef |& tee /dev/null"
+
+Thu Jul 20 20:52:13 UTC 2023 - Executing "openroad -python /openlane/scripts/mergeLib.py --output /openlane/designs/blabla/runs/mod5/tmp/synthesis/merged.lib --name sky130A_merged /home/licit/OpenLane/pdks/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib"
+
+Thu Jul 20 20:52:14 UTC 2023 - Executing "openroad -python /openlane/scripts/libtrim.py --cell-file /openlane/designs/blabla/runs/mod5/tmp/synthesis/trimmed.lib.exclude.list --output /openlane/designs/blabla/runs/mod5/tmp/synthesis/trimmed.lib /openlane/designs/blabla/runs/mod5/tmp/synthesis/merged.lib"
+
+Thu Jul 20 20:52:14 UTC 2023 - Executing "openroad -python /openlane/scripts/new_tracks.py -i /home/licit/OpenLane/pdks/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tracks.info -o /openlane/designs/blabla/runs/mod5/tmp/routing/config.tracks"
+
+Thu Jul 20 20:52:15 UTC 2023 - Executing "echo {openlane 5a767e7fd208359f89d6784c8bc7533843013962} > /openlane/designs/blabla/runs/mod5/OPENLANE_VERSION"
+
+Thu Jul 20 20:52:19 UTC 2023 - Executing "sed -E {s/^([[:space:]]+)pg_pin(.*)/\1pin\2\n\1    direction : "inout";/g} /home/licit/OpenLane/pdks/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib > /openlane/designs/blabla/runs/mod5/tmp/synthesis/1-sky130_fd_sc_hd__tt_025C_1v80.no_pg.lib"
+
+Thu Jul 20 20:52:19 UTC 2023 - Executing "sed -E {s/^([[:space:]]+)pg_pin(.*)/\1pin\2\n\1    direction : "inout";/g} /openlane/designs/blabla/runs/mod5/tmp/synthesis/trimmed.lib > /openlane/designs/blabla/runs/mod5/tmp/synthesis/1-trimmed.no_pg.lib"
+
+Thu Jul 20 20:52:19 UTC 2023 - Executing "yosys -c /openlane/scripts/yosys/synth.tcl -l /openlane/designs/blabla/runs/mod5/logs/synthesis/1-synthesis.log |& tee /dev/null"
+
+Thu Jul 20 20:52:47 UTC 2023 - Executing "sed -i -e {s/\(set ::env(CURRENT_NETLIST)\).*/\1 \/openlane\/designs\/blabla\/runs\/mod5\/results\/synthesis\/blabla.v/} /openlane/designs/blabla/runs/mod5/config.tcl"
+
+Thu Jul 20 20:52:47 UTC 2023 - Executing "sed -i -e {s/\(set ::env(PREV_NETLIST)\).*/\1 0/} /openlane/designs/blabla/runs/mod5/config.tcl"
+
+Thu Jul 20 20:52:47 UTC 2023 - Executing "sed -i /defparam/d /openlane/designs/blabla/runs/mod5/results/synthesis/blabla.v"
+
+Thu Jul 20 20:52:48 UTC 2023 - Executing "openroad -exit /openlane/scripts/openroad/sta.tcl |& tee /dev/null /openlane/designs/blabla/runs/mod5/logs/synthesis/2-sta.log"
+
+Thu Jul 20 20:52:51 UTC 2023 - Executing "openroad -exit /openlane/scripts/openroad/sta_ana.tcl |& tee /dev/null /openlane/designs/blabla/runs/mod5/logs/synthesis/3-sta_ana.log"
+
+Thu Jul 20 20:53:06 UTC 2023 - Executing "openroad -exit /openlane/scripts/openroad/floorplan.tcl |& tee /dev/null /openlane/designs/blabla/runs/mod5/logs/floorplan/4-initial_fp.log"
+
+Thu Jul 20 20:53:07 UTC 2023 - Executing "openroad -python /openlane/scripts/odbpy/defutil.py extract_core_dims --output-data /openlane/designs/blabla/runs/mod5/tmp/dimensions.txt --input-lef /openlane/designs/blabla/runs/mod5/tmp/merged.nom.lef /openlane/designs/blabla/runs/mod5/tmp/floorplan/4-initial_fp.def"
+
+Thu Jul 20 20:53:07 UTC 2023 - Executing "openroad -exit /openlane/scripts/openroad/ioplacer.tcl |& tee /dev/null /openlane/designs/blabla/runs/mod5/logs/floorplan/5-io.log"
+
+Thu Jul 20 20:53:08 UTC 2023 - Executing "openroad -exit /openlane/scripts/openroad/tapcell.tcl |& tee /dev/null /openlane/designs/blabla/runs/mod5/logs/floorplan/6-tap.log"
+
+Thu Jul 20 20:53:08 UTC 2023 - Executing "openroad -exit /openlane/scripts/openroad/pdn.tcl |& tee /dev/null /openlane/designs/blabla/runs/mod5/logs/floorplan/7-pdn.log"
+
+Thu Jul 20 20:53:18 UTC 2023 - Executing "openroad -exit /openlane/scripts/openroad/replace.tcl |& tee /dev/null /openlane/designs/blabla/runs/mod5/logs/placement/8-global.log"
+
+Thu Jul 20 20:54:13 UTC 2023 - Executing "openroad -exit /openlane/scripts/openroad/replace_ana.tcl |& tee /dev/null /openlane/designs/blabla/runs/mod5/logs/placement/8-global_ana.log"
+
+Thu Jul 20 20:55:07 UTC 2023 - Executing "openroad -exit /openlane/scripts/openroad/resizer.tcl |& tee /dev/null /openlane/designs/blabla/runs/mod5/logs/placement/9-resizer.log"
+
+Thu Jul 20 20:55:18 UTC 2023 - Executing "openroad -exit /openlane/scripts/openroad/write_verilog.tcl |& tee /dev/null /openlane/designs/blabla/runs/mod5/logs/placement/10-write_verilog.log"
+
+Thu Jul 20 20:55:19 UTC 2023 - Executing "sed -i -e {s/\(set ::env(CURRENT_NETLIST)\).*/\1 \/openlane\/designs\/blabla\/runs\/mod5\/results\/placement\/blabla.resized.v/} /openlane/designs/blabla/runs/mod5/config.tcl"
+
+Thu Jul 20 20:55:19 UTC 2023 - Executing "sed -i -e {s/\(set ::env(PREV_NETLIST)\).*/\1 \/openlane\/designs\/blabla\/runs\/mod5\/results\/synthesis\/blabla.v/} /openlane/designs/blabla/runs/mod5/config.tcl"
+
+Thu Jul 20 20:55:19 UTC 2023 - Executing "openroad -exit /openlane/scripts/openroad/opendp.tcl |& tee /dev/null /openlane/designs/blabla/runs/mod5/logs/placement/11-detailed.log"
+

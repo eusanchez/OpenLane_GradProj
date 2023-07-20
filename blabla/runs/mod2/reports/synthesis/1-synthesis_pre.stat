@@ -1,0 +1,27 @@
+
+9. Printing statistics.
+
+=== blabla ===
+
+   Number of wires:               9956
+   Number of wire bits:          14375
+   Number of public wires:          65
+   Number of public wire bits:    4484
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:              12090
+     $_ANDNOT_                    3164
+     $_AND_                        661
+     $_DFF_P_                        5
+     $_MUX_                       1434
+     $_NAND_                       575
+     $_NOR_                        813
+     $_NOT_                        641
+     $_ORNOT_                      213
+     $_OR_                         507
+     $_SDFFE_PN0P_                1094
+     $_SDFFE_PN1P_                   1
+     $_XNOR_                       913
+     $_XOR_                       2069
+

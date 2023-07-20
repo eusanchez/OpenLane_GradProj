@@ -1,0 +1,32 @@
+Thu Jul 20 20:22:28 UTC 2023 - Executing "openroad -python /openlane/scripts/odbpy/lefutil.py get_metal_layers -o /openlane/designs/blabla/runs/mod2/tmp/layers.list /home/licit/OpenLane/pdks/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__nom.tlef"
+
+Thu Jul 20 20:22:28 UTC 2023 - Executing "/openlane/scripts/mergeLef.py -o /openlane/designs/blabla/runs/mod2/tmp/merged.unpadded.nom.lef -i /home/licit/OpenLane/pdks/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__nom.tlef /home/licit/OpenLane/pdks/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef |& tee /dev/null"
+
+Thu Jul 20 20:22:28 UTC 2023 - Executing "/openlane/scripts/mergeLef.py -o /openlane/designs/blabla/runs/mod2/tmp/merged.unpadded.min.lef -i /home/licit/OpenLane/pdks/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__min.tlef /home/licit/OpenLane/pdks/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef |& tee /dev/null"
+
+Thu Jul 20 20:22:28 UTC 2023 - Executing "/openlane/scripts/mergeLef.py -o /openlane/designs/blabla/runs/mod2/tmp/merged.unpadded.max.lef -i /home/licit/OpenLane/pdks/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__max.tlef /home/licit/OpenLane/pdks/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef |& tee /dev/null"
+
+Thu Jul 20 20:22:28 UTC 2023 - Executing "openroad -python /openlane/scripts/mergeLib.py --output /openlane/designs/blabla/runs/mod2/tmp/synthesis/merged.lib --name sky130A_merged /home/licit/OpenLane/pdks/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib"
+
+Thu Jul 20 20:22:29 UTC 2023 - Executing "openroad -python /openlane/scripts/libtrim.py --cell-file /openlane/designs/blabla/runs/mod2/tmp/synthesis/trimmed.lib.exclude.list --output /openlane/designs/blabla/runs/mod2/tmp/synthesis/trimmed.lib /openlane/designs/blabla/runs/mod2/tmp/synthesis/merged.lib"
+
+Thu Jul 20 20:22:29 UTC 2023 - Executing "openroad -python /openlane/scripts/new_tracks.py -i /home/licit/OpenLane/pdks/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tracks.info -o /openlane/designs/blabla/runs/mod2/tmp/routing/config.tracks"
+
+Thu Jul 20 20:22:29 UTC 2023 - Executing "echo {openlane 5a767e7fd208359f89d6784c8bc7533843013962} > /openlane/designs/blabla/runs/mod2/OPENLANE_VERSION"
+
+Thu Jul 20 20:22:35 UTC 2023 - Executing "sed -E {s/^([[:space:]]+)pg_pin(.*)/\1pin\2\n\1    direction : "inout";/g} /home/licit/OpenLane/pdks/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib > /openlane/designs/blabla/runs/mod2/tmp/synthesis/1-sky130_fd_sc_hd__tt_025C_1v80.no_pg.lib"
+
+Thu Jul 20 20:22:36 UTC 2023 - Executing "sed -E {s/^([[:space:]]+)pg_pin(.*)/\1pin\2\n\1    direction : "inout";/g} /openlane/designs/blabla/runs/mod2/tmp/synthesis/trimmed.lib > /openlane/designs/blabla/runs/mod2/tmp/synthesis/1-trimmed.no_pg.lib"
+
+Thu Jul 20 20:22:36 UTC 2023 - Executing "yosys -c /openlane/scripts/yosys/synth.tcl -l /openlane/designs/blabla/runs/mod2/logs/synthesis/1-synthesis.log |& tee /dev/null"
+
+Thu Jul 20 20:23:05 UTC 2023 - Executing "sed -i -e {s/\(set ::env(CURRENT_NETLIST)\).*/\1 \/openlane\/designs\/blabla\/runs\/mod2\/results\/synthesis\/blabla.v/} /openlane/designs/blabla/runs/mod2/config.tcl"
+
+Thu Jul 20 20:23:05 UTC 2023 - Executing "sed -i -e {s/\(set ::env(PREV_NETLIST)\).*/\1 0/} /openlane/designs/blabla/runs/mod2/config.tcl"
+
+Thu Jul 20 20:23:05 UTC 2023 - Executing "sed -i /defparam/d /openlane/designs/blabla/runs/mod2/results/synthesis/blabla.v"
+
+Thu Jul 20 20:23:05 UTC 2023 - Executing "openroad -exit /openlane/scripts/openroad/sta.tcl |& tee /dev/null /openlane/designs/blabla/runs/mod2/logs/synthesis/2-sta.log"
+
+Thu Jul 20 20:23:08 UTC 2023 - Executing "openroad -exit /openlane/scripts/openroad/sta_ana.tcl |& tee /dev/null /openlane/designs/blabla/runs/mod2/logs/synthesis/3-sta_ana.log"
+
